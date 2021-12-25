@@ -1,6 +1,6 @@
 NAME = libftprintf.a
-PRINTF = ft_printf.c \
-				main.c
+SRC = ft_printf.c 
+
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -10,8 +10,10 @@ RM = rm -f
 
 $(NAME) : $(OBJ)
 	cp libft.a $(NAME)
-	$(ARC) $(NAME) $?
+	$(ARC) $(NAME) $(OBJ)
 	$(RAN) $(NAME)
+	$(CC) $(CFLAGS) $(NAME) main.c
+
 
 all : $(NAME)
 
