@@ -1,18 +1,53 @@
-static int	is_format(const char *input, va_list *args, t_analyze *analyze)
+static int	get_digit(const char *fmt, int *i, va_list *args)
 {
-	int	done;
+	int	digit;
 
-	done = 0;
-	while (is_flags(input[done], analyze))
-		done++;
-	analyze.width = get_digit(input, &done, args);
-	if (input[done] == '.')
+	digit = 0;
+	if (fmt[*i] == '*')
 	{
-		done++;
-		analyze.precision = get_digit(input, &done, args);
+		(*i)++;
+		return (va_arg(*args, int));
 	}
-	if (is_type(input[done], args, analyze))
-		return (done + 1);
+	while (ft_isdigit(fmt[*i]))
+	{
+		digit *= 10;
+		digit += fmt[(*i)++] - '0';
+	}
+	return (digit);
+}
+
+static int	is_flag(const char fmt, t_analyze *analyze)
+{
+	if (fmt == '-')
+		format->left_align = 1;
+	else if (fmt == '0')
+		format->zero_padding = 1;
+	else if (fmt == '#')
+		format->prefix_notation = 1;
+	else if (fmt == '+')
+		format->prefix_sign = 1;
+	else if (fmt == ' ')
+		format->prefix_space = 1;
+	else
+		return (0);
+	return (1);
+}
+
+static int	is_format(const char *fmt, va_list *args, t_analyze *analyze)
+{
+	int	i;
+
+	i = 0;
+	while (is_flag(fmt[i], analyze))
+		i++;
+	analyze->width = get_digit(fmt, &i, args);
+	if (fmt[i] == '.')
+	{
+		i++;
+		analyze->precision = get_digit(fmt, &i, args);
+	}
+	if (is_type(fmt[i], args, analyze))
+		return (i + 1);
 	return (0);
 }
 
@@ -28,7 +63,7 @@ void	init_format(t_analyze *analyze)
 	analyze->precision = -1;
 }
 
-int	ft_analyze(const char *fmt, va_list *args, t_analyze *analyze)
+int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze)
 {
 	size_t i;
 	int	j;
