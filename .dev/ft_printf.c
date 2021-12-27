@@ -1,23 +1,24 @@
 #include "ft_printf.h"
 
-int	parse(const char *format, va_list *args, t_parsed *parsed);
+int	ft_analyze(const char *fmt, va_list *args, t_analyze *analyze);
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *fmt, ...)
 {
-	t_parsed	parsed;
+	t_analyze	analyze;
 	va_list		args;
-//	int			len;
+	int			len;
 
-	parsed.buffer = (char *)malloc(BUFSIZ);
-	parsed.done = 0;
-	if (!parsed.buffer)
+	analyze.buffer = (char *)malloc(BUFSIZ);
+	//BUFSIZ = the size to be passed to setbuf
+	analyze.done = 0;
+	if (!analyze.buffer)
 		return (-1);
-	va_start(args, format);
-	printf("args is : %s\n", args);
-	//len = parse(format, &args, &parsed);
+	va_start(args, fmt);
+//	printf("args is : %s\n", args); Cannot print
+	len = ft_analyze(fmt, &args, &analyze);
 	va_end(args);
-//	if (len != 1 && parsed.done % BUFSIZ > 0)
-//		write(1, parsed.buffer, parsed.done % BUFSIZ);
-	free(parsed.buffer);
+//	if (len != 1 && analyze.done % BUFSIZ > 0)
+//		write(1, analyze.buffer, analyze.done % BUFSIZ);
+	free(analyze.buffer);
 	return (0);//(len);
 }
