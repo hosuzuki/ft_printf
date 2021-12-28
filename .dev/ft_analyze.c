@@ -1,12 +1,37 @@
-static int	get_digit(const char *fmt, int *i, va_list *args)
+static int	ft_istype(const char fmt, va_list *args, t_analyze *analyze)
 {
-	int	digit;
+	analyze->type = fmt;
+	if (fmt == 'c')
+		print_char(va_arg(*args, int), parsed);
+/*	else if (fmt == 's')
+		print_string(va_arg(*args, char *), parsed);
+	else if (fmt == 'p')
+		print_address(va_arg(*args, uintptr_t), parsed);
+	else if (fmt == 'd' || fmt == 'i')
+		print_integer(va_arg(*args, int), parsed);
+	else if (fmt == 'f')
+		print_double(va_arg(*args, double), parsed);
+	else if (fmt == 'u')
+		print_unsigned(va_arg(*args, unsigned int), parsed);
+	else if (fmt == 'x' || fmt == 'X')
+		print_hex(va_arg(*args, unsigned int), parsed);
+	else if (fmt == '%')
+		print_percent(parsed);
+*/
+	else
+		return (0);
+	return (1);
+}
+
+static int	ft_save_digit(const char *fmt, int *i, va_list *args)
+{
+	int	digit; // why int?
 
 	digit = 0;
 	if (fmt[*i] == '*')
 	{
 		(*i)++;
-		return (va_arg(*args, int));
+		return (va_arg(args, int));
 	}
 	while (ft_isdigit(fmt[*i]))
 	{
@@ -16,7 +41,7 @@ static int	get_digit(const char *fmt, int *i, va_list *args)
 	return (digit);
 }
 
-static int	is_flag(const char fmt, t_analyze *analyze)
+static int	ft_isflag(const char fmt, t_analyze *analyze)
 {
 	if (fmt == '-')
 		format->left_align = 1;
@@ -33,25 +58,25 @@ static int	is_flag(const char fmt, t_analyze *analyze)
 	return (1);
 }
 
-static int	is_format(const char *fmt, va_list *args, t_analyze *analyze)
+static int	ft_isformat(const char *fmt, va_list *args, t_analyze *analyze)
 {
 	int	i;
 
 	i = 0;
-	while (is_flag(fmt[i], analyze))
+	while (ft_isflag(fmt[i], analyze))
 		i++;
-	analyze->width = get_digit(fmt, &i, args);
+	analyze->width = ft_save_digit(fmt, &i, args);
 	if (fmt[i] == '.')
 	{
 		i++;
-		analyze->precision = get_digit(fmt, &i, args);
+		analyze->precision = ft_save_digit(fmt, &i, args);
 	}
-	if (is_type(fmt[i], args, analyze))
+	if (ft_istype(fmt[i], args, analyze))
 		return (i + 1);
 	return (0);
 }
 
-void	init_format(t_analyze *analyze)
+void	ft_init_format(t_analyze *analyze)
 {
 	analyze->len = 0;
 	analyze->left_align = 0;
@@ -60,7 +85,7 @@ void	init_format(t_analyze *analyze)
 	analyze->prefix_sign = 0;
 	analyze->prefix_space = 0;
 	analyze->width = 0;
-	analyze->precision = -1;
+	analyze->precision = -1; //?
 }
 
 int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze)
@@ -72,19 +97,21 @@ int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze)
 	analyze->status = 1;
 	while (!fmt[i] && analyze->done < INT_MAX) 
 	{
-		if (fmt[i] == '%' && fmt[i + 1])
+		if (fmt[i] == '%' && fmt[i + 1]) // what is the meaning of i + 1?
 		{
-			init_format(analyze);
-			j = is_format(&fmt[i + 1], args, analyze);
+			ft_init_format(analyze);
+			j = ft_isformat(&fmt[i + 1], args, analyze);
 			if (j != 0)
 			{
 				if (analyze->status == -1)
 					return (-1);
-				paarse_done += j + 1;
-				continue ;
+				i += j;
+				//i += j + 1;
+				//continue ;
 			}
 		}
-		push_char_to_analyze(fmt[i++], analyze);
+		i++;
+//		push_char_to_analyze(fmt[i++], analyze);
 	}
 	if (analyze->done >= INT_MAX)
 		return (-1);

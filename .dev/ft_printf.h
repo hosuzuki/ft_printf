@@ -11,8 +11,8 @@ typedef struct
 	char		*buffer;
 	size_t	done;
 	int	status;
-	int	len;
 	char	type;
+	int	len;
 	int	left_align;
 	int	zero_padding;
 	int	prefix_notation;
@@ -31,7 +31,8 @@ typedef struct
 	size_t	sum;
 }	t_push;
 
-int		ft_printf(const char *input, ...);
+//int		ft_printf(const char *input, ...);
+int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze);
 void	print_char(int c, t_analyze *analyze);
 void	print_string(char *string, t_analyze *analyze);
 void	print_address(uintptr_t dec, t_analyze *analyze);
