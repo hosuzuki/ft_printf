@@ -6,18 +6,21 @@
 #	include <stdarg.h> //for such as va_start
 # include <stdlib.h>	//for free(), malloc
 
+//# include <stdint.h>
+
+
 typedef struct
 {
 	char		*buffer;
 	size_t	done;
 	int	status;
 	char	type;
-	int	len;
-	int	left_align;
-	int	zero_padding;
-	int	prefix_notation;
-	int	prefix_sign;
-	int	prefix_space;
+	int	len; //length of output
+	int	flag_left_align;
+	int	flag_zero_padding;
+	int	flag_notation;
+	int flag_sign;
+	int flag_space;
 	int	width;
 	int	precision;
 } t_analyze;
@@ -29,17 +32,27 @@ typedef struct
 	size_t	body;
 	size_t	precision;
 	size_t	sum;
-}	t_push;
+}	t_lenght;
 
 //int		ft_printf(const char *input, ...);
 int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze);
-void	print_char(int c, t_analyze *analyze);
-void	print_string(char *string, t_analyze *analyze);
-void	print_address(uintptr_t dec, t_analyze *analyze);
-void	print_integer(int num, t_analyze *analyze);
-void	print_unsigned(unsigned int num, t_analyze *analyze);
-void	print_hex(unsigned int dec, t_analyze *analyze);
-void	print_double(double num, t_analyze *analyze);
-void	print_percent(t_analyze *analyze);
+void	ft_print_char(int c, t_analyze *analyze);
+void	ft_print_string(char *string, t_analyze *analyze);
+void	ft_print_address(uintptr_t dec, t_analyze *analyze);
+void	ft_print_integer(int num, t_analyze *analyze);
+void	ft_print_unsigned(unsigned int num, t_analyze *analyze);
+void	ft_print_hex(unsigned int dec, t_analyze *analyze);
+void	ft_print_double(double num, t_analyze *analyze);
+void	ft_print_percent(t_analyze *analyze);
+
+void	ft_push_to_analyze(char *str, int len, t_analyze *analyze);
+void	ft_push_char_to_analyze(char ch, t_analyze *analyze);
+void	ft_zero_padding(int size, t_analyze *analyze);
+void	ft_space_padding(int size, t_analyze *analyze);
+
+int		ft_push(t_analyze *analyze, char *prefix, char *str);
+int8_t	ft_add_prefix(t_format *format, int sign);
+void	ft_init_format(t_format *format);
+
 
 #endif
