@@ -2,12 +2,12 @@
 
 void	ft_init_format(t_analyze *analyze)
 {
-	analyze->len = 0;
-	analyze->left_align = 0;
-	analyze->zero_padding = 0;
-	analyze->prefix_notation = 0;
-	analyze->prefix_sign = 0;
-	analyze->prefix_space = 0;
+	analyze->len = 0; 
+	analyze->flag_left_align = OFF;
+	analyze->flag_zero_padding = OFF;
+	analyze->flag_notation = OFF;
+	analyze->flag_sign = OFF;
+	analyze->flag_space = OFF;
 	analyze->width = 0;
 	analyze->precision = -1; //?
 }
@@ -24,7 +24,7 @@ int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze)
 		if (fmt[i] == '%' && fmt[i + 1]) // do i need i + 1?
 		{
 			ft_init_format(analyze);
-			j = ft_isformat(&fmt[i + 1], args, analyze);
+			j = ft_formatlen(&fmt[i + 1], args, analyze);
 			if (j != 0)
 			{
 				if (analyze->status == -1)

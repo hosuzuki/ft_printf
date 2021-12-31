@@ -44,15 +44,15 @@ static int	ft_save_digit(const char *fmt, int *i, va_list *args)
 static int	ft_isflag(const char fmt, t_analyze *analyze)
 {
 	if (fmt == '-')
-		analyze->flag_left_align = 1; //chang it to ON?
+		analyze->flag_left_align = ON;
 	else if (fmt == '0')
-		analyze->flag_zero_padding = 1;
+		analyze->flag_zero_padding = ON;
 	else if (fmt == '#')
-		analyze->flag_notation = 1;
+		analyze->flag_notation = ON;
 	else if (fmt == '+')
-		analyze->flag_sign = 1;
+		analyze->flag_sign = ON;
 	else if (fmt == ' ')
-		analyze->flag_space = 1;
+		analyze->flag_space = ON;
 	else
 		return (0);
 	return (1);
@@ -71,7 +71,7 @@ static int	ft_formatlen(const char *fmt, va_list *args, t_analyze *analyze)
 		i++;
 		analyze->precision = ft_save_digit(fmt, &i, args);
 	}
-	if (ft_istype(fmt[i], args, analyze))
+	if (ft_istype(fmt[i], args, analyze)) //what if fmt[i] = '.'?
 		return (i + 1);
 	return (0);
 }
