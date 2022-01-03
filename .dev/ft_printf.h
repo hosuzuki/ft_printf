@@ -5,13 +5,15 @@
 # include <unistd.h>
 #	include <stdarg.h> //for such as va_start
 # include <stdlib.h>	//for free(), malloc
-
+# include <limits.h> // for INT_MAX
 //# include <stdint.h>
+
+# include "libft.h"
 
 # define ON 1
 # define OFF 0
 
-typedef struct
+typedef struct list
 {
 	char		*buffer;
 	size_t	done;
@@ -34,10 +36,15 @@ typedef struct
 	size_t	body;
 	size_t	precision;
 	size_t	sum;
-}	t_lenght;
+}	t_length;
+
+int	ft_printf(const char *fmt, ...);
 
 //int		ft_printf(const char *input, ...);
 int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze);
+int	ft_formatlen(const char *fmt, va_list *args, t_analyze *analyze);
+void	ft_write_char(char c, t_analyze *analyze);
+
 void	ft_print_char(int c, t_analyze *analyze);
 void	ft_print_string(char *string, t_analyze *analyze);
 void	ft_print_address(uintptr_t dec, t_analyze *analyze);
@@ -53,8 +60,8 @@ void	ft_zero_padding(int size, t_analyze *analyze);
 void	ft_space_padding(int size, t_analyze *analyze);
 
 int		ft_push(t_analyze *analyze, char *prefix, char *str);
-int8_t	ft_add_prefix(t_format *format, int sign);
-void	ft_init_format(t_format *format);
+//int8_t	ft_add_prefix(t_format *format, int sign);
+//void	ft_init_format(t_format *format);
 
 
 #endif

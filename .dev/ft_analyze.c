@@ -1,3 +1,5 @@
+#include "ft_printf.h"
+
 static int	ft_istype(const char fmt, va_list *args, t_analyze *analyze)
 {
 	analyze->type = fmt;
@@ -31,7 +33,7 @@ static int	ft_save_digit(const char *fmt, int *i, va_list *args)
 	if (fmt[*i] == '*')
 	{
 		(*i)++;
-		return (va_arg(args, int));
+		return (va_arg(*args, int));
 	}
 	while (ft_isdigit(fmt[*i]))
 	{
@@ -58,7 +60,7 @@ static int	ft_isflag(const char fmt, t_analyze *analyze)
 	return (1);
 }
 
-static int	ft_formatlen(const char *fmt, va_list *args, t_analyze *analyze)
+int	ft_formatlen(const char *fmt, va_list *args, t_analyze *analyze)
 {
 	int	i;
 

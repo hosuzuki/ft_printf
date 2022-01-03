@@ -23,19 +23,19 @@ int	ft_analyze_fmt(const char *fmt, va_list *args, t_analyze *analyze)
 	{
 		if (fmt[i] == '%' && fmt[i + 1]) // do i need i + 1?
 		{
+			if (fmt[i + 1] == '%')
+				break;
 			ft_init_format(analyze);
 			j = ft_formatlen(&fmt[i + 1], args, analyze);
 			if (j != 0)
 			{
 				if (analyze->status == -1)
 					return (-1);
-				i += j;
-				//i += j + 1;
-				//continue ;
+				i += j + 1;
+				continue ;
 			}
 		}
-		i++;
-//		push_char_to_analyze(fmt[i++], analyze);
+		ft_write_char(fmt[i++], analyze);
 	}
 	if (analyze->done >= INT_MAX)
 		return (-1);
@@ -47,9 +47,12 @@ int	ft_printf(const char *fmt, ...)
 	t_analyze	*analyze;
 	va_list		args;
 	int			len;
+	char	*tmp;
 
-	analyze->buffer = (char *)malloc(BUFSIZ);
+	analyze = NULL;
+	tmp = (char *)malloc(BUFSIZ);
 	//BUFSIZ = the size to be passed to setbuf
+	analyze->buffer = tmp;
 	analyze->done = 0;
 	if (!analyze->buffer)
 		return (-1);

@@ -19,9 +19,9 @@ static void	ft_save_length(t_length *length, t_analyze *analyze)
 	length->body = analyze->len;//do i need this?
 	length->precision = 0;
 	if ((ft_isint(analyze->type) || analyze->type == 'p') \
-		&& analyzet->precision >= 0)
+		&& analyze->precision >= 0)
 	{
-		analyze->zero_padding = 0;// do i need this?
+		analyze->flag_zero_padding = 0;// do i need this?
 		if (analyze->precision > analyze->len)
 			length->precision = analyze->precision - analyze->len;
 	}
@@ -38,21 +38,23 @@ int	ft_push(t_analyze *analyze, char *prefix, char *body)
 {
 	t_length	*length;
 
+	(void)body;
+	length = NULL;
 	length->prefix = ft_strlen(prefix);
 	ft_save_length(length, analyze);
 	if (analyze->done + length->sum >= INT_MAX)
 		return (-1);
-/*	if (!analyze->left_align && !analyze->zero_padding && length->padding >= 0)
+/*	if (!analyze->left_align && !analyze->flag_zero_padding && length->padding >= 0)
 		space_padding(length.padding, analyze);
 	push_to_analyze(prefix, length.prefix, analyze);
-	if (!analyze.left_align && analyze.zero_padding && length.padding >= 0)
-		zero_padding(length.padding, analyze);
+	if (!analyze.left_align && analyze.flag_zero_padding && length.padding >= 0)
+		flag_zero_padding(length.padding, analyze);
 	if ((is_integer(analyze.type) || analyze.type == 'p') \
 		&& length.precision >= 0)
-		zero_padding(length.precision, analyze);
+		flag_zero_padding(length.precision, analyze);
 	push_to_analyze(body, length.body, analyze);
 	if (is_double(analyze.type))
-		zero_padding(length.precision, analyze);
+		flag_zero_padding(length.precision, analyze);
 	if (analyze.left_align && length.padding >= 0)
 		space_padding(length.padding, analyze);
 */

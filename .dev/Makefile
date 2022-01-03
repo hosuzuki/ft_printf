@@ -1,9 +1,13 @@
 NAME = libftprintf.a
 SRC = ft_printf.c \
-			parse.c
+			ft_analyze.c \
+			ft_push.c \
+			ft_write.c \
+			ft_print_char.c
+
 OBJ = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 ARC = ar rc
 RAN = ranlib
 RM = rm -f
@@ -13,7 +17,6 @@ $(NAME) : $(OBJ)
 	$(ARC) $(NAME) $(OBJ)
 	$(RAN) $(NAME)
 	$(CC) $(CFLAGS) $(NAME) main.c
-
 
 all : $(NAME)
 
