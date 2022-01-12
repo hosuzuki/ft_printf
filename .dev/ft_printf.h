@@ -63,5 +63,4 @@ int		ft_push(t_analyze *analyze, char *prefix, char *str);
 //int8_t	ft_add_prefix(t_format *format, int sign);
 //void	ft_init_format(t_format *format);
 
-
 #endif
