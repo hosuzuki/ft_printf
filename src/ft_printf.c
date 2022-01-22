@@ -2,19 +2,16 @@
 
 int ft_printf(const char *fmt, ...)
 {
-	va_list args;
-	char *buffer;
+	t_stock	lst;
 
-	va_start(args, fmt);
-//	ft_analyze_fmt(fmt);
-	buffer = va_arg(args, char *);
-	printf("%s\n", buffer);
+	if(!fmt)
+		return (0);
+	lst = malloc(sizeof(t_stock));
+	if (!lst)
+		return (-1);
+	lst.total_len = 0;
+	va_start(lst.args, fmt);
+	ft_analyze_fmt(fmt, lst, args);
 	va_end(args);
-	return (0);
-}
-
-int main(void)
-{
-	ft_printf("a", "abcde");
-	return (0);
+	return (lst.total_len);
 }
