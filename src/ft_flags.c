@@ -1,15 +1,16 @@
-#include <ft_printf.h>
+#include "ft_printf.h"
+#include "libft.h"
 
-void ft_left_align(const char *fmt, t_stock lst, int &i)
+void ft_left_align(const char *fmt, t_stock *lst, size_t *i)
 {
 	size_t len;
 	
-	while (ft_isdigit(fmt[*i])
+	len = 0;
+	while (ft_isdigit(fmt[*i]))
 	{
 		len = len * 10;
-		len = len + ft_atoi(fmt[*i]);
-		*i++;
+		len = len + (fmt[*i] - '0');
+		(*i)++;
 	}
-	lst.left_align = len;
+	lst->left_align = len;
 }
-
