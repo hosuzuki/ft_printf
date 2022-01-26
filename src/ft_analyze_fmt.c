@@ -1,6 +1,14 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+int ft_isflag(char c)
+{
+	if (c == '-' || c == '+' || c == ' ' || c == '#' || c == '0')
+		return (1);
+	else
+		return (0);
+}
+
 void ft_write_fmt(const char *fmt, size_t i)
 {
 	write(1, &fmt[i], 1);
@@ -19,18 +27,21 @@ void	ft_analyze_speci(const char *fmt, t_stock *lst,  size_t i)
 
 void ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
 {
-	if (fmt[*i] == '-')
+	while (ft_isflag(fmt[*i]))
 	{
-		(*i)++;
-		ft_left_align(fmt, lst, i);
-	}
-/*
-	f (fmt[*i] == '0')
-	if (fmt[*i] == '.')
-	if (fmt[*i] == ' ')
-	if (fmt[*i] == '#')
-	if (fmt[*i] == '+')
+		if (fmt[*i] == '-')
+			ft_left_align(fmt, lst, i);
+		else if (fmt[*i] == '0')
+			ft_zero_pad(fmt, lst, i);
+		else if (fmt[*i] == '+')
+			ft_sign(lst, i);
+			//			ft_sign(fmt, lst, i);
+/*		else if (fmt[*i] == ' ')
+			ft_spcace(fmt, lst, i);
+		else (fmt[*i] == '#')
+			ft_hash(fmt, lst, i);
 */
+	}
 }
 
 void ft_init_lst(t_stock *lst)

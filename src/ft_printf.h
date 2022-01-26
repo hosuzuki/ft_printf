@@ -43,5 +43,8 @@ void	ft_print_address(t_stock *lst, uintptr_t address);
 
 void ft_print_decimal(t_stock *lst, size_t decimal);
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i);
+void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i);
+void ft_sign(t_stock *lst, size_t *i);
+
 
 #endif
