@@ -3,6 +3,7 @@
 int ft_printf(const char *fmt, ...)
 {
 	t_stock	*lst;
+	size_t total_length;
 
 	if(!fmt)
 		return (0);
@@ -11,7 +12,8 @@ int ft_printf(const char *fmt, ...)
 		return (-1);
 	lst->total_len = 0;
 	va_start(lst->args, fmt);
-	ft_analyze_fmt(fmt, lst);
+	total_length = ft_analyze_fmt(fmt, lst);
 	va_end(lst->args);
-	return (lst->total_len);
+	free(lst);
+	return (total_length);
 }

@@ -14,16 +14,19 @@ typedef struct
 {
 	va_list	args;
 	size_t total_len;
-	char	type;
-	int len;
-	int left_align;
-	int zero_pad;
+	//char	type;
+	int status;
+	size_t left_align;
+	size_t zero_pad;
 	int notation;
+	int hash;
 	int sign;
 	int space;
-	int	flag;
+//	int	flag;
 	int width;
 	int	precision;
+
+	size_t len;
 } t_stock;
 
 typedef struct
@@ -36,7 +39,7 @@ typedef struct
 } t_length;
 
 int	ft_printf(const char *fmt, ...);
-void	ft_analyze_fmt(const char *fmt, t_stock *lst);
+size_t	ft_analyze_fmt(const char *fmt, t_stock *lst);
 void ft_print_str(t_stock *lst);
 void ft_print_char(t_stock *lst);
 void	ft_print_address(t_stock *lst, uintptr_t address);
@@ -45,6 +48,7 @@ void ft_print_decimal(t_stock *lst, size_t decimal);
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i);
 void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i);
 void ft_sign(t_stock *lst, size_t *i);
+void ft_space(t_stock *lst, size_t *i);
 
 
 #endif

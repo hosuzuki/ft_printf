@@ -1,6 +1,12 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+void ft_print_space(t_stock *lst)
+{
+	if (lst->space == ON)
+		write(1, " ", 1);
+}
+
 void ft_print_sign(t_stock *lst, size_t decimal)
 {
 	if (lst->sign == ON)
@@ -45,6 +51,7 @@ void ft_print_decimal(t_stock *lst, size_t decimal)
 	}
 	res = ft_itoa(decimal);
 	ft_print_sign(lst, decimal);
+	ft_print_space(lst);
 	ft_print_zero_pad(lst, len);
 	write(1, res, len);
 	ft_print_left_align(lst, len);
