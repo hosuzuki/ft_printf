@@ -26,7 +26,7 @@ void ft_print_sign(t_stock *lst)
 
 void ft_print_left_align(t_stock *lst, size_t len)
 {
-	if (lst->left_align != OFF)
+	if (lst->left_align == OFF)
 		return ;
 	lst->width -= len;
 	while (lst->width > 0)
@@ -38,7 +38,7 @@ void ft_print_left_align(t_stock *lst, size_t len)
 
 void ft_print_zero_pad(t_stock *lst, size_t len)
 {
-	if (lst->zero_pad != OFF)
+	if (lst->zero_pad == OFF)
 		return ;
 	lst->width -= len;
 	while (lst->width > 0)
