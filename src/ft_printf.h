@@ -52,6 +52,8 @@ void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i);
 void ft_sign(const char *fmt, t_stock *lst, size_t *i);
 void ft_space(const char *fmt, t_stock *lst, size_t *i);
 void ft_hash(const char *fmt, t_stock *lst, size_t *i);
+void ft_precision(const char *fmt, t_stock *lst, size_t *i);
+void ft_width(const char *fmt, t_stock *lst, size_t *i);
 
 
 #endif

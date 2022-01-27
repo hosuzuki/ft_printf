@@ -21,7 +21,7 @@ void ft_precision(const char *fmt, t_stock *lst, size_t *i)
 		len = len + (fmt[*i] - '0');
 		(*i)++;
 	}
-	lst->width = len;
+	lst->precision = len;
 }
 
 void ft_width(const char *fmt, t_stock *lst, size_t *i)

@@ -38,6 +38,15 @@ void ft_print_left_align(t_stock *lst, size_t len)
 
 void ft_print_zero_pad(t_stock *lst, size_t len)
 {
+	if (lst->width < 1)
+	{
+		lst->precision -= len;
+		while (lst->precision > 0)
+		{
+			write(1, "0", 1);
+			lst->precision--;
+		}
+	}
 	if (lst->zero_pad == OFF)
 		return ;
 	lst->width -= len;
@@ -67,6 +76,9 @@ void ft_print_decimal(t_stock *lst, int decimal)
 	ft_print_sign(lst);
 	ft_print_space(lst);
 	ft_print_zero_pad(lst, len);
-	write(1, res, len);
+	if (res[0] == '-')
+		write(1, ++res, len);
+	else 
+		write(1, res, len);
 	ft_print_left_align(lst, len);
 }
