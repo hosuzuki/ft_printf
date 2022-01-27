@@ -9,6 +9,8 @@
 # define ERROR -1
 #	define OFF 0
 # define ON  1
+# define PLUS 2
+# define MINUS -2
 
 typedef struct
 {
@@ -16,8 +18,8 @@ typedef struct
 	size_t total_len;
 	//char	type;
 	int status;
-	size_t left_align;
-	size_t zero_pad;
+	int left_align;
+	int zero_pad;
 	int notation;
 	int hash;
 	int sign;
@@ -44,11 +46,12 @@ void ft_print_str(t_stock *lst);
 void ft_print_char(t_stock *lst);
 void	ft_print_address(t_stock *lst, uintptr_t address);
 
-void ft_print_decimal(t_stock *lst, size_t decimal);
+void ft_print_decimal(t_stock *lst, int decimal);
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i);
 void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i);
-void ft_sign(t_stock *lst, size_t *i);
-void ft_space(t_stock *lst, size_t *i);
+void ft_sign(const char *fmt, t_stock *lst, size_t *i);
+void ft_space(const char *fmt, t_stock *lst, size_t *i);
+void ft_hash(const char *fmt, t_stock *lst, size_t *i);
 
 
 #endif

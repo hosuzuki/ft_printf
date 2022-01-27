@@ -22,7 +22,7 @@ void	ft_analyze_speci(const char *fmt, t_stock *lst,  size_t i)
 	else if (fmt[i] == 'p')
 		ft_print_address(lst, va_arg(lst->args, uintptr_t));
 	else if (fmt[i] == 'd')
-		ft_print_decimal(lst, va_arg(lst->args, size_t));
+		ft_print_decimal(lst, va_arg(lst->args, int));
 }
 
 int ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
@@ -34,13 +34,11 @@ int ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
 		else if (fmt[*i] == '0')
 			ft_zero_pad(fmt, lst, i);
 		else if (fmt[*i] == '+')
-			ft_sign(lst, i);
+			ft_sign(fmt, lst, i);
 		else if (fmt[*i] == ' ')
-			ft_space(lst, i);
-/*
- * else (fmt[*i] == '#')
+			ft_space(fmt, lst, i);
+	 	else if (fmt[*i] == '#')
 			ft_hash(fmt, lst, i);
-*/
 		if (lst->status == ERROR)
 		{
 			printf("ERROR\n");
@@ -76,7 +74,8 @@ size_t ft_analyze_fmt(const char *fmt, t_stock *lst)
 		if (fmt[i] == '%')
 		{
 			i++;
-			if (!ft_analyze_flag(fmt, lst, &i))
+			ft_analyze_flag(fmt, lst, &i);
+			if (lst->status == ERROR)
 				return (ERROR);
 			ft_analyze_speci(fmt, lst, i);
 		}

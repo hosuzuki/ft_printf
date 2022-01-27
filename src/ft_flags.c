@@ -1,7 +1,63 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void ft_space(t_stock *lst, size_t *i)
+void ft_precision(const char *fmt, t_stock *lst, size_t *i)
+{
+	size_t len;
+	
+	if (fmt[*i] != '.')
+		return ;
+	(*i)++;
+	len = 0;
+	if (fmt[*i] == '*')
+	{
+		lst->precision = va_arg(lst->args, int);
+		(*i)++;
+		return ;
+	}
+	while (ft_isdigit(fmt[*i]))
+	{
+		len = len * 10;
+		len = len + (fmt[*i] - '0');
+		(*i)++;
+	}
+	lst->width = len;
+}
+
+void ft_width(const char *fmt, t_stock *lst, size_t *i)
+{
+	size_t len;
+
+	len = 0;
+	if (fmt[*i] == '*')
+	{
+		lst->width = va_arg(lst->args, int);
+		(*i)++;
+		return ;
+	}
+	while (ft_isdigit(fmt[*i]))
+	{
+		len = len * 10;
+		len = len + (fmt[*i] - '0');
+		(*i)++;
+	}
+	lst->width = len;
+}
+
+void ft_hash(const char *fmt, t_stock *lst, size_t *i)
+{
+	if (lst->sign == ON || lst->space == ON)
+	{
+		lst->status = ERROR;
+		return ;
+	}
+	(*i)++;
+	lst->hash = ON;
+	ft_width(fmt, lst, i);
+	ft_precision(fmt, lst, i);
+}
+
+void ft_space(const char *fmt, t_stock *lst, size_t *i)
 {
 	if (lst->sign == ON || lst->hash == ON)
 	{
@@ -10,55 +66,45 @@ void ft_space(t_stock *lst, size_t *i)
 	}
 	(*i)++;
 	lst->space = ON;
+	ft_width(fmt, lst, i);
+	ft_precision(fmt, lst, i);
 }
 
-void ft_sign(t_stock *lst, size_t *i)
+void ft_sign(const char *fmt, t_stock *lst, size_t *i)
 {
-	if (lst->left_align > 0)
+	if (lst->left_align == ON)
 	{
 		lst->status = ERROR;
 		return ;
 	}
 	(*i)++;
-	lst->sign = ON;
+	lst->sign = PLUS;
+	ft_width(fmt, lst, i);
+	ft_precision(fmt, lst, i);
 }
 
 void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i)
 {
-	size_t len;
-
-	if (lst->left_align > 0)
+	if (lst->left_align == ON)
 	{
 		lst->status = ERROR;
 		return ;
 	}
 	(*i)++;
-	len = 0;
-	while (ft_isdigit(fmt[*i]))
-	{
-		len *= 10;
-		len += (fmt[*i] - '0');
-		(*i)++;
-	}
-	lst->zero_pad = len;
+	lst->zero_pad = ON;
+	ft_width(fmt, lst, i);
+	ft_precision(fmt, lst, i);
 }
 
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i)
 {
-	size_t len;
-	
 	if (lst->zero_pad == ON)
 	{
 		lst->status = ERROR;
 		return ;
 	}
 	(*i)++;
-	len = 0;
-	while (ft_isdigit(fmt[*i]))
-	{
-		len = len * 10;
-		len = len + (fmt[*i] - '0');
-		(*i)++;
-	}
-	lst->left_align = len;
+	lst->left_align = ON;
+	ft_width(fmt, lst, i);
+	ft_precision(fmt, lst, i);
 }

@@ -4,45 +4,57 @@
 void ft_print_space(t_stock *lst)
 {
 	if (lst->space == ON)
+	{
+		lst->width--;
 		write(1, " ", 1);
+	}
 }
 
-void ft_print_sign(t_stock *lst, size_t decimal)
+void ft_print_sign(t_stock *lst)
 {
-	if (lst->sign == ON)
+	if (lst->sign == PLUS)
 	{
-		if (decimal >= 0)
-			write(1, "+", 1);
+		lst->width--;
+		write(1, "+", 1);
+	}
+	else if (lst->sign == MINUS)
+	{
+		lst->width--;
+		write(1, "-", 1);
 	}
 }
 
 void ft_print_left_align(t_stock *lst, size_t len)
 {
-	lst->left_align = lst->left_align - len;
-	while (lst->left_align > 0)
+	if (lst->left_align != OFF)
+		return ;
+	lst->width -= len;
+	while (lst->width > 0)
 	{
 		write(1, " ", 1);
-		lst->left_align--;
+		lst->width--;
 	}
 }
 
 void ft_print_zero_pad(t_stock *lst, size_t len)
 {
-	lst->zero_pad -= len;
-	while (lst->zero_pad > 0)
+	if (lst->zero_pad != OFF)
+		return ;
+	lst->width -= len;
+	while (lst->width > 0)
 	{
 		write(1, "0", 1);
-		lst->zero_pad--;
+		lst->width--;
 	}
 }
 
-void ft_print_decimal(t_stock *lst, size_t decimal)
+void ft_print_decimal(t_stock *lst, int decimal)
 {
 	size_t len;
-	float tmp;
+	int tmp;
 	char	*res;
 
-	tmp = (float)decimal;
+	tmp = decimal;
 	len = 1;
 	while (10 < tmp)
 	{
@@ -50,7 +62,9 @@ void ft_print_decimal(t_stock *lst, size_t decimal)
 		len++;
 	}
 	res = ft_itoa(decimal);
-	ft_print_sign(lst, decimal);
+	if (res[0] == '-')
+		lst->sign = MINUS;
+	ft_print_sign(lst);
 	ft_print_space(lst);
 	ft_print_zero_pad(lst, len);
 	write(1, res, len);
