@@ -23,6 +23,13 @@ void	ft_analyze_speci(const char *fmt, t_stock *lst,  size_t i)
 		ft_print_address(lst, va_arg(lst->args, uintptr_t));
 	else if (fmt[i] == 'd')
 		ft_print_decimal(lst, va_arg(lst->args, int));
+	else if (fmt[i] == '%')
+	{
+		lst->total_len++;
+		write(1, "%", 1);
+	}
+// have to take care of "cspdiuxX% 
+	
 }
 
 int ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
