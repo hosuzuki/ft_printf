@@ -1,12 +1,20 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void ft_print_space(t_stock *lst)
+void ft_print_space(t_stock *lst, int len)
 {
 	if (lst->space == ON)
 	{
 		lst->width--;
 		write(1, " ", 1);
+	}
+	else if (lst->width > 0)
+	{
+		while (lst->width - len > 0)
+		{
+			write(1, " ", 1);
+			lst->width--;
+		}
 	}
 }
 
@@ -24,7 +32,7 @@ void ft_print_sign(t_stock *lst)
 	}
 }
 
-void ft_print_left_align(t_stock *lst, size_t len)
+void ft_print_left_align(t_stock *lst, int len)
 {
 	if (lst->left_align == OFF)
 		return ;
@@ -36,7 +44,7 @@ void ft_print_left_align(t_stock *lst, size_t len)
 	}
 }
 
-void ft_print_zero_pad(t_stock *lst, size_t len)
+void ft_print_zero_pad(t_stock *lst, int len)
 {
 	if (lst->width < 1)
 	{
@@ -59,7 +67,7 @@ void ft_print_zero_pad(t_stock *lst, size_t len)
 
 void ft_print_decimal(t_stock *lst, int decimal)
 {
-	size_t len;
+	int len;
 	int tmp;
 	char	*res;
 
@@ -73,8 +81,9 @@ void ft_print_decimal(t_stock *lst, int decimal)
 	res = ft_itoa(decimal);
 	if (res[0] == '-')
 		lst->sign = MINUS;
+	ft_print_space(lst, len);
 	ft_print_sign(lst);
-	ft_print_space(lst);
+	ft_print_space(lst, len);
 	ft_print_zero_pad(lst, len);
 	if (res[0] == '-')
 		write(1, ++res, len);

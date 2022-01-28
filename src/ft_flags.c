@@ -46,6 +46,7 @@ void ft_width(const char *fmt, t_stock *lst, size_t *i)
 
 void ft_hash(const char *fmt, t_stock *lst, size_t *i)
 {
+	(void)fmt;
 	if (lst->sign == ON || lst->space == ON)
 	{
 		lst->status = ERROR;
@@ -53,12 +54,13 @@ void ft_hash(const char *fmt, t_stock *lst, size_t *i)
 	}
 	(*i)++;
 	lst->hash = ON;
-	ft_width(fmt, lst, i);
-	ft_precision(fmt, lst, i);
+//	ft_width(fmt, lst, i);
+//	ft_precision(fmt, lst, i);
 }
 
 void ft_space(const char *fmt, t_stock *lst, size_t *i)
 {
+	(void)fmt;
 	if (lst->sign == ON || lst->hash == ON)
 	{
 		lst->status = ERROR;
@@ -66,12 +68,13 @@ void ft_space(const char *fmt, t_stock *lst, size_t *i)
 	}
 	(*i)++;
 	lst->space = ON;
-	ft_width(fmt, lst, i);
-	ft_precision(fmt, lst, i);
+//	ft_width(fmt, lst, i);
+//	ft_precision(fmt, lst, i);
 }
 
 void ft_sign(const char *fmt, t_stock *lst, size_t *i)
 {
+	(void)fmt;
 	if (lst->left_align == ON)
 	{
 		lst->status = ERROR;
@@ -79,12 +82,13 @@ void ft_sign(const char *fmt, t_stock *lst, size_t *i)
 	}
 	(*i)++;
 	lst->sign = PLUS;
-	ft_width(fmt, lst, i);
-	ft_precision(fmt, lst, i);
+//	ft_width(fmt, lst, i);
+//	ft_precision(fmt, lst, i);
 }
 
 void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i)
 {
+	(void)fmt;
 	if (lst->left_align == ON)
 	{
 		lst->status = ERROR;
@@ -92,12 +96,13 @@ void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i)
 	}
 	(*i)++;
 	lst->zero_pad = ON;
-	ft_width(fmt, lst, i);
-	ft_precision(fmt, lst, i);
+//	ft_width(fmt, lst, i);
+//	ft_precision(fmt, lst, i);
 }
 
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i)
 {
+	(void)fmt;
 	if (lst->zero_pad == ON)
 	{
 		lst->status = ERROR;
@@ -105,6 +110,6 @@ void ft_left_align(const char *fmt, t_stock *lst, size_t *i)
 	}
 	(*i)++;
 	lst->left_align = ON;
-	ft_width(fmt, lst, i);
-	ft_precision(fmt, lst, i);
+//	ft_width(fmt, lst, i);
+//	ft_precision(fmt, lst, i);
 }
