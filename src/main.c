@@ -2,7 +2,8 @@
 
 int main(void)
 {
-	ft_printf("s is : %s\n", "abcde");
+/*
+ * ft_printf("s is : %s\n", "abcde");
 	ft_printf("a\n");
 
 	ft_printf("[%-10d]\n", 1);
@@ -21,6 +22,37 @@ int main(void)
 	printf("[%.10d]\n", 1);
 	ft_printf("[%.10d]\n", -1);
 	printf("[%.10d]\n", -1);
+*/
+
+	ft_printf("[%+10d]\n", 123);
+	printf("[%+10d]\n", 123);
+
+	char *s = "abcde";
+	char *n = NULL;
+	
+	ft_printf("%p\n", s);
+	printf("%p\n", s);
+	ft_printf("%p\n", n);
+	printf("%p\n", n);
+
+	ft_printf("%-p\n", s);
+	printf("%-p\n", s);
+/*
+ * ft_printf("%#p\n", s);
+	printf("%#p\n", s); //reuslts in undefined behavior
+	ft_printf("% p\n", s);
+	printf("% p\n", s);// results in undefined behavior
+	ft_printf("%0p\n", s);
+	printf("%0p\n", s); //results in undefined behavior
+	ft_printf("%+p\n", s);
+	printf("%+p\n", s); // results in undefined behavior
+*/
+	ft_printf("[%20p]\n", s);
+	printf("[%20p]\n", s);
+//	ft_printf("[%.20p]\n", s);
+//	printf("[%.20p]\n", s); // reuslts in undefined behavior
+
+	
 
 	return (0);
 }

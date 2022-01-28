@@ -1,56 +1,38 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static int	hex_len(uintptr_t dec)
+static ssize_t	ft_putnbr_base_r(size_t	nbr, char	*base, size_t len)
 {
-	int	len;
-
-	len = 0;
-	while (dec >= 16)
+	static ssize_t total;
+	
+	total = 0;
+	if (nbr < 0)
 	{
-		len ++;
-		dec /= 16;
-	}
-	len ++;
-	return (len);
-}
-
-void	ft_ptr_to_ascii(uintptr_t dec, char *ascii, t_stock *lst)
-{
-	const char	hex[16] = "0123456789abcdef";
-	int			done;
-
-	done = lst->len;
-	ascii[done--] = '\0';
-	while (dec >= 16)
-	{
-		ascii[done] = hex[(int)(dec % 16)];
-		dec /= 16;
-		done --;
-	}
-	ascii[done--] = hex[(int)dec];
-}
-
-void	ft_print_address(t_stock *lst, uintptr_t address)
-{
-	char	ascii[16 + 1];
-
-	if (!address && !lst->precision)
-	{
-		lst->len = 0;
-		ascii[0] = '\0';
-	}
-	else if (!address)
-	{
-		lst->len = 1;
-		ascii[0] = '0';
-		ascii[1] = '\0';
+		write(1, "-", 1);
+		total++;
+		ft_putnbr_base_r(-nbr, base, len);
 	}
 	else
 	{
-		lst->len = hex_len(address);
-		ft_ptr_to_ascii(address, ascii, lst);
+		if (nbr >= len)
+		{
+			ft_putnbr_base_r(nbr / len, base, len);
+		}
+		write(1, &base[nbr % len], 1);
+		total++;
+		return (total);
 	}
-//	lst->status = push(parsed, parsed->format, "0x\0", ascii);
+	return (-1);
 }
 
+void	ft_print_address(t_stock *lst, size_t address)
+{
+	if (lst->left_align == ON || lst->zero_pad == ON || lst->hash == ON ||
+			lst->sign == ON || lst->precision != OFF)
+	{
+		lst->status = ERROR;
+		return ;
+	}
+	lst->total_len += write(1, "0x", 2);
+	lst->total_len += ft_putnbr_base_r(address, "0123456789abcdef", 16);
+}

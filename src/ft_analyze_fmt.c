@@ -20,7 +20,7 @@ void	ft_analyze_speci(const char *fmt, t_stock *lst,  size_t i)
 	else if (fmt[i] == 'c')
 		ft_print_char(lst);
 	else if (fmt[i] == 'p')
-		ft_print_address(lst, va_arg(lst->args, uintptr_t));
+		ft_print_address(lst, (size_t)va_arg(lst->args, void *));
 	else if (fmt[i] == 'd')
 		ft_print_decimal(lst, va_arg(lst->args, int));
 	else if (fmt[i] == '%')
@@ -68,7 +68,7 @@ void ft_init_lst(t_stock *lst)
 	lst->status = OFF;
 	lst->left_align = OFF;
 	lst->zero_pad = OFF;
-	lst->notation = OFF;
+//	lst->notation = OFF;
 	lst->hash = OFF;
 	lst->sign = OFF;
 	lst->space = OFF;
@@ -93,13 +93,14 @@ size_t ft_analyze_fmt(const char *fmt, t_stock *lst)
 			if (lst->status == ERROR)
 				return (ERROR);
 			ft_analyze_speci(fmt, lst, i);
+			i++;
 		}
 		else
 		{
 			ft_write_fmt(fmt, i);
 			lst->total_len++;
+			i++;
 		}
-		i++;
 	}
 	return (lst->total_len);
 }

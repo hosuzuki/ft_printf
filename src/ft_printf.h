@@ -20,7 +20,7 @@ typedef struct
 	int status;
 	int left_align;
 	int zero_pad;
-	int notation;
+//	int notation;
 	int hash;
 	int sign;
 	int space;
@@ -44,7 +44,7 @@ int	ft_printf(const char *fmt, ...);
 size_t	ft_analyze_fmt(const char *fmt, t_stock *lst);
 void ft_print_str(t_stock *lst);
 void ft_print_char(t_stock *lst);
-void	ft_print_address(t_stock *lst, uintptr_t address);
+void	ft_print_address(t_stock *lst, size_t address);
 
 void ft_print_decimal(t_stock *lst, int decimal);
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i);
