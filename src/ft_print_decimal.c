@@ -3,11 +3,10 @@
 
 void ft_print_space(t_stock *lst, int len)
 {
-	if (lst->space == ON)
-	{
+	if (lst->sign != OFF)
 		lst->width--;
+	if (lst->space == ON)
 		write(1, " ", 1);
-	}
 	else if (lst->width > 0)
 	{
 		while (lst->width - len > 0)

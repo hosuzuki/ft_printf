@@ -26,6 +26,8 @@ int main(void)
 
 	ft_printf("[%+10d]\n", 123);
 	printf("[%+10d]\n", 123);
+	ft_printf("[%10d]\n", 123);
+	printf("[%10d]\n", 123);
 
 	char *s = "abcde";
 	char *n = NULL;
@@ -35,8 +37,10 @@ int main(void)
 	ft_printf("%p\n", n);
 	printf("%p\n", n);
 
-	ft_printf("%-p\n", s);
-	printf("%-p\n", s);
+	ft_printf("[%-15p]\n", s);
+	printf("[%-15p]\n", s);
+	ft_printf("[%3p]\n", s);
+	printf("[%3p]\n", s);
 /*
  * ft_printf("%#p\n", s);
 	printf("%#p\n", s); //reuslts in undefined behavior

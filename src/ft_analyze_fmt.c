@@ -13,6 +13,7 @@ void ft_write_fmt(const char *fmt, size_t i)
 {
 	write(1, &fmt[i], 1);
 }
+
 void	ft_analyze_speci(const char *fmt, t_stock *lst,  size_t i)
 {
 	if (fmt[i] == 's')
@@ -29,7 +30,6 @@ void	ft_analyze_speci(const char *fmt, t_stock *lst,  size_t i)
 		write(1, "%", 1);
 	}
 // have to take care of "cspdiuxX% 
-	
 }
 
 void ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
