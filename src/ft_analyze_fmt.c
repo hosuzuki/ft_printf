@@ -22,8 +22,10 @@ void	ft_analyze_speci(const char *fmt, t_stock *lst,  size_t i)
 		ft_print_char(lst);
 	else if (fmt[i] == 'p')
 		ft_print_address(lst, (size_t)va_arg(lst->args, void *));
-	else if (fmt[i] == 'd')
+	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		ft_print_decimal(lst, va_arg(lst->args, int));
+	else if (fmt[i] == 'u')
+		ft_print_unsigned(lst, va_arg(lst->args, unsigned int));
 	else if (fmt[i] == '%')
 	{
 		lst->total_len++;

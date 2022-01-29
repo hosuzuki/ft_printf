@@ -55,8 +55,14 @@ int main(void)
 	printf("[%20p]\n", s);
 //	ft_printf("[%.20p]\n", s);
 //	printf("[%.20p]\n", s); // reuslts in undefined behavior
+	ft_printf("%%,%d\n", 123);
+	printf("%%,%d\n", 123);
 
-	
+	ft_printf("[%10u]\n", 1);
+	printf("[%10u]\n", 1);
+	ft_printf("[%10u]\n", -1);
+	printf("[%10u]\n", -1);
+
 
 	return (0);
 }

@@ -6,13 +6,17 @@ void ft_print_space(t_stock *lst, int len)
 	if (lst->sign != OFF)
 		lst->width--;
 	if (lst->space == ON)
+	{
+		lst->total_len++;
 		write(1, " ", 1);
+	}
 	else if (lst->width > 0)
 	{
 		while (lst->width - len > 0)
 		{
 			write(1, " ", 1);
 			lst->width--;
+			lst->total_len++;
 		}
 	}
 }
@@ -22,11 +26,13 @@ void ft_print_sign(t_stock *lst)
 	if (lst->sign == PLUS)
 	{
 		lst->width--;
+		lst->total_len++;
 		write(1, "+", 1);
 	}
 	else if (lst->sign == MINUS)
 	{
 		lst->width--;
+		lst->total_len++;
 		write(1, "-", 1);
 	}
 }
@@ -39,6 +45,7 @@ void ft_print_left_align(t_stock *lst, int len)
 	while (lst->width > 0)
 	{
 		write(1, " ", 1);
+		lst->total_len++;
 		lst->width--;
 	}
 }
@@ -52,6 +59,7 @@ void ft_print_zero_pad(t_stock *lst, int len)
 		{
 			write(1, "0", 1);
 			lst->precision--;
+			lst->total_len++;
 		}
 	}
 	if (lst->zero_pad == OFF)
@@ -60,6 +68,7 @@ void ft_print_zero_pad(t_stock *lst, int len)
 	while (lst->width > 0)
 	{
 		write(1, "0", 1);
+		lst->total_len++;
 		lst->width--;
 	}
 }
@@ -88,5 +97,6 @@ void ft_print_decimal(t_stock *lst, int decimal)
 		write(1, ++res, len);
 	else 
 		write(1, res, len);
+	lst->total_len += len;
 	ft_print_left_align(lst, len);
 }
