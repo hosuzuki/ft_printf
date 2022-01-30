@@ -2,8 +2,8 @@
 
 int main(void)
 {
-/*
- * ft_printf("s is : %s\n", "abcde");
+
+  ft_printf("s is : %s\n", "abcde");
 	ft_printf("a\n");
 
 	ft_printf("[%-10d]\n", 1);
@@ -22,7 +22,9 @@ int main(void)
 	printf("[%.10d]\n", 1);
 	ft_printf("[%.10d]\n", -1);
 	printf("[%.10d]\n", -1);
-*/
+
+
+
 
 	ft_printf("[%+10d]\n", 123);
 	printf("[%+10d]\n", 123);
@@ -62,7 +64,6 @@ int main(void)
 	printf("[%10u]\n", 1);
 	ft_printf("[%10u]\n", -1);
 	printf("[%10u]\n", -1);
-
 
 	return (0);
 }

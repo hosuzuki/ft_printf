@@ -8,9 +8,10 @@ void ft_print_space(t_stock *lst, int len)
 	if (lst->space == ON)
 	{
 		lst->total_len++;
+		lst->width--;
 		write(1, " ", 1);
 	}
-	else if (lst->width > 0)
+	else if (lst->width > 0 || lst->zero_pad == OFF)
 	{
 		while (lst->width - len > 0)
 		{
@@ -79,24 +80,27 @@ void ft_print_decimal(t_stock *lst, int decimal)
 	int tmp;
 	char	*res;
 
+	if (decimal < 0)
+	{
+		lst->sign = MINUS;
+		decimal *= -1;
+	}
 	tmp = decimal;
 	len = 1;
 	while (10 < tmp)
 	{
-		tmp = tmp / 10;
+		tmp /= 10;
 		len++;
 	}
 	res = ft_itoa(decimal);
-	if (res[0] == '-')
-		lst->sign = MINUS;
-	ft_print_space(lst, len);
+	if (lst->left_align == OFF)
+		ft_print_space(lst, len);
 	ft_print_sign(lst);
-	ft_print_space(lst, len);
+	if (lst->left_align == OFF)
+		ft_print_space(lst, len);
 	ft_print_zero_pad(lst, len);
-	if (res[0] == '-')
-		write(1, ++res, len);
-	else 
-		write(1, res, len);
+	write(1, res, len);
 	lst->total_len += len;
 	ft_print_left_align(lst, len);
+	free (res);
 }

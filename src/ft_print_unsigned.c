@@ -6,13 +6,14 @@ static int	count_digits(unsigned n)
 	int	i;
 
 	i = 1;
-	if (n == INT_MIN)
+/*	if (n == INT_MIN)
 		return (11);
 	if (n < 0)
 	{
 		n = n * -1;
 		i++;
 	}
+*/
 	while (n > 9)
 	{
 		n = n / 10;
@@ -44,12 +45,12 @@ static void	to_alpha(char *res, int n, int *i)
 
 char	*ft_itoa_unsigned(unsigned int n)
 {
-	int		digits;
+	int		len;
 	char	*res;
 	int		i;
 
-	digits = count_digits(n);
-	res = ft_calloc(digits + 1, sizeof(char));
+	len = count_digits(n);
+	res = ft_calloc(len + 1, sizeof(char));
 	if (!res)
 		return (NULL);
 	i = 0;
@@ -64,6 +65,7 @@ void ft_print_unsigned(t_stock *lst, unsigned int un_signed)
 	unsigned int tmp;
 	char	*res;
 
+//	printf("un_signed: %u\n", un_signed);
 	tmp = un_signed;
 	len = 1;
 	while (10 < tmp)
@@ -72,16 +74,12 @@ void ft_print_unsigned(t_stock *lst, unsigned int un_signed)
 		len++;
 	}
 	res = ft_itoa_unsigned(un_signed);
-	if (res[0] == '-')
-		lst->sign = MINUS;
 	ft_print_space(lst, len);
 	ft_print_sign(lst);
 	ft_print_space(lst, len);
 	ft_print_zero_pad(lst, len);
-	if (res[0] == '-')
-		write(1, ++res, len);
-	else 
-		write(1, res, len);
+	write(1, res, len);
 	lst->total_len += len;
 	ft_print_left_align(lst, len);
+	free (res);
 }
