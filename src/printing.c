@@ -1,13 +1,13 @@
 #include "ft_printf.h"
-#include "libft.h"
+#include "../libft/libft.h"
 
 void ft_print_str(t_stock *lst)
 {
 	char	*str;
 	size_t len;
 
-	len = ft_strlen(str);
 	str = va_arg(lst->args, char *);
+	len = ft_strlen(str);
 	write(1, str, len);
 	lst->total_len = lst->total_len + len;
 }

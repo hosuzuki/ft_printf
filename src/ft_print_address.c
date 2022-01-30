@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-#include "libft.h"
+#include "../libft/libft.h"
 
 void ft_print_space_ad(t_stock *lst, int len)
 {

@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-#include "libft.h"
+#include "../libft/libft.h"
 
 void ft_print_space_hex(t_stock *lst, int len)
 {
@@ -7,9 +7,9 @@ void ft_print_space_hex(t_stock *lst, int len)
 	
 	space_len = lst->width;
 	if (lst->hash == ON)
-		space-len -= 2;
+		space_len -= 2;
 	if (0 < lst->precision)
-		space_len -= precision;
+		space_len -= lst->precision;
 	else
 		space_len -= len;
 	while  (0 < space_len)
@@ -20,7 +20,7 @@ void ft_print_space_hex(t_stock *lst, int len)
 	}
 }
 
-static ssize_t	ft_dtoh(size_t	nbr, char	*base, size_t len)
+static char *ft_dtoh(size_t	nbr, char	*base, size_t len)
 {
 	static ssize_t i;
 	static char res[10];
@@ -51,13 +51,43 @@ void ft_print_zero_hex(t_stock *lst, int len)
 
 	zero_len = lst->precision;
 	if (lst->hash == ON)
-		zero-len -= 2;
+		zero_len -= 2;
 	zero_len -= len;
 	while  (0 < zero_len)
 	{
-		write(1, " ", 1);
+		write(1, "0", 1);
 		zero_len--;
 		lst->total_len++;
+	}
+}
+
+void	ft_print_hex_cap(t_stock *lst, int decimal)
+{
+	int len;
+	char *hex;
+
+	if (lst->space == ON || lst->sign != OFF)
+	{
+		lst->status = ERROR;
+		return ;
+	}
+	hex = ft_dtoh(decimal, "0123456789ABCDEF", 16);
+	len = ft_strlen(hex);
+	if (lst->left_align == OFF)
+	{
+		ft_print_space_hex(lst, len);
+		ft_print_zero_hex(lst, len);
+		if (lst->hash == ON)
+			lst->total_len += write(1, "0x", 2);
+		lst->total_len += write(1, hex, len);
+	}
+	else
+	{
+		ft_print_zero_hex(lst, len);
+		if (lst->hash == ON)
+			lst->total_len += write(1, "0x", 2);
+		lst->total_len += write(1, hex, len);
+		ft_print_space_hex(lst, len);
 	}
 }
 
@@ -79,14 +109,14 @@ void	ft_print_hex(t_stock *lst, int decimal)
 		ft_print_zero_hex(lst, len);
 		if (lst->hash == ON)
 			lst->total_len += write(1, "0x", 2);
-		lst->total_len += ft_putnbr_base_r(decimal, "0123456789abcdef", 16);
+		lst->total_len += write(1, hex, len);
 	}
 	else
 	{
 		ft_print_zero_hex(lst, len);
 		if (lst->hash == ON)
 			lst->total_len += write(1, "0x", 2);
-		lst->total_len += ft_putnbr_base_r(decimal, "0123456789abcdef", 16);
+		lst->total_len += write(1, hex, len);
 		ft_print_space_hex(lst, len);
 	}
 }

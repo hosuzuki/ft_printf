@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-#include "libft.h"
+#include "../libft/libft.h"
 
 void ft_precision(const char *fmt, t_stock *lst, size_t *i)
 {
