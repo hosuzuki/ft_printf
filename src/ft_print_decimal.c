@@ -11,7 +11,7 @@ void ft_print_space(t_stock *lst, int len)
 		lst->width--;
 		write(1, " ", 1);
 	}
-	else if (lst->width > 0 || lst->zero_pad == OFF)
+	else if (lst->width > 0 && lst->zero_pad == OFF)
 	{
 		while (lst->width - len > 0)
 		{
@@ -96,8 +96,8 @@ void ft_print_decimal(t_stock *lst, int decimal)
 	if (lst->left_align == OFF)
 		ft_print_space(lst, len);
 	ft_print_sign(lst);
-	if (lst->left_align == OFF)
-		ft_print_space(lst, len);
+//	if (lst->left_align == OFF)
+//		ft_print_space(lst, len);
 	ft_print_zero_pad(lst, len);
 	write(1, res, len);
 	lst->total_len += len;
