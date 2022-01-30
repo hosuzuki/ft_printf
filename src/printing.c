@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 17:23:17 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/01/30 19:48:09 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void ft_print_str(t_stock *lst)
 	size_t len;
 
 	str = va_arg(lst->args, char *);
+	if (str == NULL)
+	{
+		lst->total_len += write(1, "(null)", 6);
+		return ;
+	}
 	len = ft_strlen(str);
 	write(1, str, len);
 	lst->total_len = lst->total_len + len;

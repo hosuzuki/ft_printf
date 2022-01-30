@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 17:23:15 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/01/30 20:06:18 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,18 @@ void ft_print_zero_pad(t_stock *lst, int len)
 void ft_print_decimal(t_stock *lst, int decimal)
 {
 	int len;
-	int tmp;
+	long tmp;
 	char	*res;
 
+	tmp = (long)decimal;
+	len = 1;
 	if (decimal < 0)
 	{
-		lst->sign = MINUS;
-		decimal *= -1;
+//		lst->sign = MINUS;
+		tmp *= -1;
+		len++;
 	}
-	tmp = decimal;
-	len = 1;
-	while (10 < tmp)
+	while (10 <= tmp)
 	{
 		tmp /= 10;
 		len++;
