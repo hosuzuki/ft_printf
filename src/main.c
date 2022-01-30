@@ -68,16 +68,21 @@ int main(void)
 	printf("[%10x]\n", 108);
 	
 
+	ft_printf("%#x\n", 108); 
 	printf("%#x\n", 108); 
 //	printf("% x\n", 108);// results in undefined behavior
+	ft_printf("%0x\n", 108); //results in undefined behavior
 	printf("%0x\n", 108); //results in undefined behavior
 //	printf("%+x\n", 108); // results in undefined behavior
 	printf("%-x\n", 108);
-	printf("[%-10.10x]\n", 108);
+	printf("[%-10.10x]\n", 108); //000
 	printf("[%10x]\n", 108);
-	printf("[%.10x]\n", 108);
+	printf("[%.10x]\n", 108); //000
 	printf("[%-10x]\n", 108);
-	printf("[%-.10x]\n", 108);
+	printf("[%-.10x]\n", 108); // 000
+	printf("[%5.10x]\n", 108); // 000
+	printf("[%15.10x]\n", 108); // 000
+	printf("[%-15.10x]\n", 108); // 000
 
 	return (0);
 }

@@ -4,6 +4,8 @@ SRC = ft_printf.c \
 			ft_flags.c \
 			ft_print_address.c \
 			ft_print_decimal.c \
+			ft_print_unsigned.c \
+			ft_print_hex.c \
 			printing.c 
 
 OBJ = $(SRC:.c=.o)

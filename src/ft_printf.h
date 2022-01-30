@@ -45,8 +45,10 @@ size_t	ft_analyze_fmt(const char *fmt, t_stock *lst);
 void ft_print_str(t_stock *lst);
 void ft_print_char(t_stock *lst);
 void	ft_print_address(t_stock *lst, size_t address);
-
+void ft_print_unsigned(t_stock *lst, unsigned int decimal);
 void ft_print_decimal(t_stock *lst, int decimal);
+void	ft_print_hex(t_stock *lst, int decimal);
+
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i);
 void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i);
 void ft_sign(const char *fmt, t_stock *lst, size_t *i);
@@ -55,5 +57,9 @@ void ft_hash(const char *fmt, t_stock *lst, size_t *i);
 void ft_precision(const char *fmt, t_stock *lst, size_t *i);
 void ft_width(const char *fmt, t_stock *lst, size_t *i);
 
+void ft_print_space(t_stock *lst, int len);
+void ft_print_sign(t_stock *lst);
+void ft_print_left_align(t_stock *lst, int len);
+void ft_print_zero_pad(t_stock *lst, int len);
 
 #endif
