@@ -2,8 +2,12 @@
 
 int main(void)
 {
+	ft_printf("[ %-2c ]", '0');
+	//	ft_printf(" %d \n", 10);
+//	ft_printf(" NULL %s NULL ", NULL);
+//	printf(" NULL %s NULL ", NULL);
 
-	ft_printf("s is : %s\n", "abcde");
+/*	ft_printf("s is : %s\n", "abcde");
 	ft_printf("a\n");
 
 	ft_printf("[%-10d]\n", 1);
@@ -42,6 +46,9 @@ int main(void)
 	printf("[%-15p]\n", s);
 	ft_printf("[%3p]\n", s);
 	printf("[%3p]\n", s);
+
+*/
+
 	/*
  * ft_printf("%#p\n", s);
 	printf("%#p\n", s); //reuslts in undefined behavior
@@ -52,7 +59,9 @@ int main(void)
 	ft_printf("%+p\n", s);
 	printf("%+p\n", s); // results in undefined behavior
 */
-	ft_printf("[%20p]\n", s);
+
+
+/*	ft_printf("[%20p]\n", s);
 	printf("[%20p]\n", s);
 //	ft_printf("[%.20p]\n", s);
 //	printf("[%.20p]\n", s); // reuslts in undefined behavior
@@ -94,6 +103,6 @@ int main(void)
 	printf("[%15.10x]\n", 108); // 000
 	ft_printf("[%-15.10x]\n", 108); // 000
 	printf("[%-15.10x]\n", 108); // 000
-
+*/
 	return (0);
 }

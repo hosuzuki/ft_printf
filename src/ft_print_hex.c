@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 17:23:16 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/01/30 20:29:19 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void ft_print_zero_hex(t_stock *lst, int len)
 	}
 }
 
-void	ft_print_hex_cap(t_stock *lst, int decimal)
+void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 {
 	int len;
 	char *hex;
@@ -103,7 +103,7 @@ void	ft_print_hex_cap(t_stock *lst, int decimal)
 	}
 }
 
-void	ft_print_hex(t_stock *lst, int decimal)
+void	ft_print_hex(t_stock *lst, unsigned int decimal)
 {
 	int len;
 	char *hex;
