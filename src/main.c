@@ -64,5 +64,20 @@ int main(void)
 	ft_printf("[%10u]\n", -1);
 	printf("[%10u]\n", -1);
 
+	ft_printf("[%10x]\n", 108);
+	printf("[%10x]\n", 108);
+	
+
+	printf("%#x\n", 108); 
+//	printf("% x\n", 108);// results in undefined behavior
+	printf("%0x\n", 108); //results in undefined behavior
+//	printf("%+x\n", 108); // results in undefined behavior
+	printf("%-x\n", 108);
+	printf("[%-10.10x]\n", 108);
+	printf("[%10x]\n", 108);
+	printf("[%.10x]\n", 108);
+	printf("[%-10x]\n", 108);
+	printf("[%-.10x]\n", 108);
+
 	return (0);
 }

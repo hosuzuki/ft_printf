@@ -74,9 +74,9 @@ void ft_print_unsigned(t_stock *lst, unsigned int un_signed)
 		len++;
 	}
 	res = ft_itoa_unsigned(un_signed);
-	ft_print_space(lst, len);
+	if (lst->left_align == OFF)
+		ft_print_space(lst, len);
 	ft_print_sign(lst);
-	ft_print_space(lst, len);
 	ft_print_zero_pad(lst, len);
 	write(1, res, len);
 	lst->total_len += len;
