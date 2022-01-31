@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 17:23:15 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 07:23:36 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void ft_precision(const char *fmt, t_stock *lst, size_t *i)
 		len = len + (fmt[*i] - '0');
 		(*i)++;
 	}
+//	if (len != 0)
 	lst->precision = len;
 }
 

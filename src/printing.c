@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/01 00:04:54 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 07:56:12 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ void ft_print_str(t_stock *lst)
 		return ;
 	}
 	len = ft_strlen(str);
-	if (lst->left_align != ON)
+//	if (len == 0)
+	//	return;
+	if (lst->left_align == OFF)
 		ft_print_space(lst, len);
 //	if (lst->precision == 0)
 		
-	if (lst->precision >= len)
+	if (lst->precision >= len || lst->precision == OFF)
 		lst->total_len += write(1, str, len);
 	else if (lst->precision < len)
 		lst->total_len += write(1, str, lst->precision);

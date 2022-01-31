@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/31 15:45:40 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 07:09:47 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <limits.h>
 
 # define ERROR -1
-#	define OFF 0
+#	define OFF -3
 # define ON  1
 # define PLUS 2
 # define MINUS -2

@@ -3,7 +3,17 @@
 
 int main(void)
 {
-	ft_printf("[%.2x]\n", 1);
+	ft_printf("[% s]\n", "-");
+	ft_printf("[%1s]\n", "");
+	ft_printf("[% s]\n", "");
+	ft_printf("%#x\n", 0);//zenn
+
+	ft_printf("%-s\n", "-");
+	ft_printf("%.s\n", "-"); // zenn
+	ft_printf("[%04x]\n", 9);
+
+	//	ft_printf("[%.2x]\n", 1); //zenn
+//
 	//	ft_printf("[%.1s %.2s %.3s %.4s]\n", " - ", "", "4", "");
 		//	ft_printf("[ %010d ]\n", INT_MIN);
 	//	ft_printf("[ %04d ]\n", -14);

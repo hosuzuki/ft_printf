@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/31 15:36:36 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 07:19:08 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void ft_init_lst(t_stock *lst)
 	lst->sign = OFF;
 	lst->space = OFF;
 	lst->width = 0;
-	lst->precision = 0;
+	lst->precision = OFF;
 }	
 
 size_t ft_analyze_fmt(const char *fmt, t_stock *lst)

@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/31 15:48:19 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 07:58:54 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void ft_print_space(t_stock *lst, int len)
 {
 //	if (lst->sign != OFF)
 //		lst->width--;
-	if (lst->space == ON)
+	if (lst->space == ON && len != 0)
 	{
 		lst->total_len += write(1, " ", 1);
 		lst->width--;
