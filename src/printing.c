@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 20:56:42 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/01/31 12:45:56 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void ft_print_str(t_stock *lst)
 {
 	char	*str;
-	size_t len;
+	int len;
 
 	str = va_arg(lst->args, char *);
 	if (str == NULL)

@@ -1,8 +1,18 @@
 #include "./includes/ft_printf.h"
+#include <limits.h>
 
 int main(void)
 {
-	ft_printf("[ %-2c ]", '0');
+	ft_printf("[ %010d ]\n", INT_MIN);
+	//	ft_printf("[ %04d ]\n", -14);
+
+	//	ft_printf("[ %-13p %-14p ]\n", ULONG_MAX, -ULONG_MAX);
+
+	//	ft_printf("[ %-11p %-12p ]\n", INT_MIN, INT_MAX);
+//	printf("[ %-11p %-12p ]\n", INT_MIN, INT_MAX);
+
+	//	ft_printf("[%1s]", "");
+//	ft_printf("[ %-2c ]", '0');
 	//	ft_printf(" %d \n", 10);
 //	ft_printf(" NULL %s NULL ", NULL);
 //	printf(" NULL %s NULL ", NULL);

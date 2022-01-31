@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 17:23:25 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/01/31 14:49:49 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 # define ERROR -1
 #	define OFF 0
@@ -58,9 +59,9 @@ void ft_print_str(t_stock *lst);
 void ft_print_char(t_stock *lst);
 void	ft_print_address(t_stock *lst, size_t address);
 void ft_print_unsigned(t_stock *lst, unsigned int decimal);
-void ft_print_decimal(t_stock *lst, int decimal);
-void	ft_print_hex(t_stock *lst, int decimal);
-void	ft_print_hex_cap(t_stock *lst, int decimal);
+void ft_print_decimal(t_stock *lst, long long decimal);
+void	ft_print_hex(t_stock *lst, unsigned int decimal);
+void	ft_print_hex_cap(t_stock *lst, unsigned int decimal);
 
 void ft_left_align(const char *fmt, t_stock *lst, size_t *i);
 void ft_zero_pad(const char *fmt, t_stock *lst, size_t *i);
@@ -74,5 +75,6 @@ void ft_print_space(t_stock *lst, int len);
 void ft_print_sign(t_stock *lst);
 void ft_print_left_align(t_stock *lst, int len);
 void ft_print_zero_pad(t_stock *lst, int len);
+char	*ft_itoa_l(long long n);
 
 #endif
