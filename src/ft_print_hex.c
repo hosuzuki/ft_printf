@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 20:29:19 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/01/31 16:17:54 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 void ft_print_space_hex(t_stock *lst, int len)
 {
-	int space_len;
 	
-	space_len = lst->width;
 	if (lst->hash == ON)
-		space_len -= 2;
+		lst->width -= 2;
 	if (0 < lst->precision)
-		space_len -= lst->precision;
-	else
-		space_len -= len;
-	while  (0 < space_len)
+		lst->width -= lst->precision;
+//	else
+//		lst->width -= len;
+	if (lst->width > 0 && lst->zero_pad == OFF)
 	{
-		write(1, " ", 1);
-		space_len--;
-		lst->total_len++;
+		while  (0 < lst->width - len)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
 	}
 }
 
@@ -59,17 +59,14 @@ static char *ft_dtoh(size_t	nbr, char	*base, size_t len)
 
 void ft_print_zero_hex(t_stock *lst, int len)
 {
-	int zero_len;
-
-	zero_len = lst->precision;
+	if (lst->precision > lst->width)
+		 lst-> width =  lst->precision;
 	if (lst->hash == ON)
-		zero_len -= 2;
-	zero_len -= len;
-	while  (0 < zero_len)
+		lst->width -= 2;
+	while  (0 < lst->width - len)
 	{
-		write(1, "0", 1);
-		zero_len--;
-		lst->total_len++;
+		lst->total_len += write(1, "0", 1);
+		lst->width--;;
 	}
 }
 
@@ -90,14 +87,20 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 		ft_print_space_hex(lst, len);
 		ft_print_zero_hex(lst, len);
 		if (lst->hash == ON)
+		{
 			lst->total_len += write(1, "0x", 2);
+			lst->width -= 2;
+		}
 		lst->total_len += write(1, hex, len);
 	}
 	else
 	{
 		ft_print_zero_hex(lst, len);
 		if (lst->hash == ON)
+		{
 			lst->total_len += write(1, "0x", 2);
+			lst->width -= 2;
+		}
 		lst->total_len += write(1, hex, len);
 		ft_print_space_hex(lst, len);
 	}
