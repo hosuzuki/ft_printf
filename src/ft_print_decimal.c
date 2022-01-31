@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/31 14:36:20 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/01/31 15:48:19 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,33 +78,35 @@ void ft_print_zero_pad(t_stock *lst, int len)
 	}
 }
 
-void ft_print_decimal(t_stock *lst, long long decimal)
+void ft_print_decimal(t_stock *lst, int decimal)
 {
 	int len;
 	long long  tmp;
 	char	*res;
 
-	tmp = decimal;
+	tmp = (long long)decimal;
 	len = 1;
 	if (decimal < 0)
 	{
 		lst->sign = MINUS;
 		tmp *= -1;
-		decimal *= -1;
 	}
 	while (10 <= tmp)
 	{
 		tmp /= 10;
 		len++;
 	}
-	res = ft_itoa_l(decimal);
+	res = ft_itoa(decimal);
 	if (lst->left_align == OFF)
 		ft_print_space(lst, len);
 	ft_print_sign(lst);
 //	if (lst->left_align == OFF)
 //		ft_print_space(lst, len);
 	ft_print_zero_pad(lst, len);
-	lst->total_len += write(1, res, len);
+	if (res[0] == '-')
+		lst->total_len += write(1, res + 1, len);
+	else
+		lst->total_len += write(1, res, len);
 	ft_print_left_align(lst, len);
 	free (res);
 }
