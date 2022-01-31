@@ -3,7 +3,9 @@
 
 int main(void)
 {
-	ft_printf("[ %010d ]\n", INT_MIN);
+	ft_printf("[%.2x]\n", 1);
+	//	ft_printf("[%.1s %.2s %.3s %.4s]\n", " - ", "", "4", "");
+		//	ft_printf("[ %010d ]\n", INT_MIN);
 	//	ft_printf("[ %04d ]\n", -14);
 
 	//	ft_printf("[ %-13p %-14p ]\n", ULONG_MAX, -ULONG_MAX);

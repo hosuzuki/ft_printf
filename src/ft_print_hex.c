@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/31 16:17:54 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 00:19:22 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,19 @@ static char *ft_dtoh(size_t	nbr, char	*base, size_t len)
 
 void ft_print_zero_hex(t_stock *lst, int len)
 {
+	if (lst->precision > 0)
+		lst->zero_pad == ON;
 	if (lst->precision > lst->width)
-		 lst-> width =  lst->precision;
-	if (lst->hash == ON)
-		lst->width -= 2;
-	while  (0 < lst->width - len)
+		 lst-> width = lst->precision;
+//	if (lst->hash == ON)
+//		lst->width -= 2;
+	if (lst->zero_pad == ON)
 	{
-		lst->total_len += write(1, "0", 1);
-		lst->width--;;
+		while  (0 < lst->width - len)
+		{
+			lst->total_len += write(1, "0", 1);
+			lst->width--;;
+		}
 	}
 }
 

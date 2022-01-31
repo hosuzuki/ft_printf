@@ -6,6 +6,7 @@ SRC_F = ft_printf.c \
 			ft_print_decimal.c \
 			ft_print_unsigned.c \
 			ft_print_hex.c \
+			ft_utils.c \
 			printing.c 
 SRC_D = ./src/
 SRC = $(addprefix $(SRC_D), $(SRC_F))
@@ -38,4 +39,6 @@ fclean : clean
 
 re : fclean all
 
-.PHONEY : all clean fclean re
+bonus :
+
+.PHONEY : all clean fclean re bonus
