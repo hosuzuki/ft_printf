@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/01 08:07:00 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 22:10:33 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 		ft_print_space_hex(lst, len);
 		ft_print_zero_hex(lst, len);
 		if (lst->hash == ON && decimal != 0)
-			lst->total_len += write(1, "0x", 2);
+			lst->total_len += write(1, "0X", 2);
 		lst->total_len += write(1, hex, len);
 	}
 	else
 	{
 		ft_print_zero_hex(lst, len);
 		if (lst->hash == ON && decimal != 0)
-			lst->total_len += write(1, "0x", 2);
+			lst->total_len += write(1, "0X", 2);
 		lst->total_len += write(1, hex, len);
 		ft_print_space_hex(lst, len);
 	}
