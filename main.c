@@ -3,8 +3,16 @@
 
 int main(void)
 {
-	ft_printf("[% s]\n", "-");
 	ft_printf("[%1s]\n", "");
+
+	printf("[% d]\n", -1);
+	ft_printf("[% d]\n", -1);
+
+	printf("[% d]\n", 0);
+	ft_printf("[% d]\n", 0);
+
+	ft_printf("[% s]\n", "-");
+	ft_printf("[% s]\n", "-");
 	ft_printf("[% s]\n", "");
 	ft_printf("%#x\n", 0);//zenn
 

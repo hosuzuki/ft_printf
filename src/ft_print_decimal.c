@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/01 18:55:23 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 21:50:10 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,28 @@
 
 void ft_print_space(t_stock *lst, int len)
 {
-	if (lst->space == OFF)
+/*	if (lst->space == ON && len != 0)
+	{
+		lst->total_len += write(1, " ", 1);
+		lst->width--;
+	}
+	else if (lst->width > 0 && lst->zero_pad == OFF)
+	{
+		while (lst->width - len > 0)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	{
+*/
+	if (lst->sign == MINUS)
 		return;
-	if (lst->width > len)
+	if (lst->space == ON && len != 0)
+	{
+		lst->total_len += write(1, " ", 1);
+		lst->width--;
+	}
+	else if (lst->width > len && lst->zero_pad == OFF)
 	{
 		while (lst->width - len > 0)
 		{
@@ -25,7 +44,7 @@ void ft_print_space(t_stock *lst, int len)
 			lst->width--;
 		}
 	}
-	else if (lst->precision != OFF && lst->width > lst->precision)
+	else if (lst->precision > 0 && lst->width > lst->precision)
 	{
 		while (lst->width - lst->precision > 0)
 		{
@@ -35,6 +54,31 @@ void ft_print_space(t_stock *lst, int len)
 	}
 }
 /*
+// from str
+void ft_print_space(t_stock *lst, int len)
+{
+	if (lst->space == off)
+		return;
+	if (lst->width > len)
+	{
+		while (lst->width - len > 0)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	}
+	else if (lst->precision != off && lst->width > lst->precision)
+	{
+		while (lst->width - lst->precision > 0)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	}
+}
+*/
+/*
+//original
 void ft_print_space(t_stock *lst, int len)
 {
 //	if (lst->sign != OFF)
