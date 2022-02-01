@@ -6,12 +6,38 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/01 07:56:12 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 18:52:17 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
+
+static void ft_print_space_s(t_stock *lst, int len)
+{
+//	if (lst->sign != OFF)
+//		lst->width--;
+//	if (len == 0)
+//		return;
+	if (lst->space == OFF)
+		return;
+	if (lst->width > len)
+	{
+		while (lst->width - len > 0)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	}
+	else if (lst->precision != OFF && lst->width > lst->precision)
+	{
+		while (lst->width - lst->precision > 0)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	}
+}
 
 void ft_print_str(t_stock *lst)
 {
@@ -28,7 +54,7 @@ void ft_print_str(t_stock *lst)
 //	if (len == 0)
 	//	return;
 	if (lst->left_align == OFF)
-		ft_print_space(lst, len);
+		ft_print_space_s(lst, len);
 //	if (lst->precision == 0)
 		
 	if (lst->precision >= len || lst->precision == OFF)
@@ -38,7 +64,7 @@ void ft_print_str(t_stock *lst)
 //	else if (lst->precision > len)
 //		lst->total_len += write(1, str, len);
 	if (lst->left_align == ON)
-		ft_print_space(lst, len);
+		ft_print_space_s(lst, len);
 }
 
 void ft_print_char(t_stock *lst)

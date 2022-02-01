@@ -6,13 +6,35 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/01 07:58:54 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/01 18:55:23 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
+void ft_print_space(t_stock *lst, int len)
+{
+	if (lst->space == OFF)
+		return;
+	if (lst->width > len)
+	{
+		while (lst->width - len > 0)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	}
+	else if (lst->precision != OFF && lst->width > lst->precision)
+	{
+		while (lst->width - lst->precision > 0)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	}
+}
+/*
 void ft_print_space(t_stock *lst, int len)
 {
 //	if (lst->sign != OFF)
@@ -31,7 +53,7 @@ void ft_print_space(t_stock *lst, int len)
 		}
 	}
 }
-
+*/
 void ft_print_sign(t_stock *lst)
 {
 	if (lst->sign == PLUS)
