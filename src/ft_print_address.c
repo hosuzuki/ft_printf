@@ -6,14 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/31 13:28:28 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/02 21:10:30 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-void ft_print_space_ad(t_stock *lst, int len)
+void	ft_print_space_ad(t_stock *lst, int len)
 {
 	if (lst->width > 0)
 	{
@@ -28,9 +28,9 @@ void ft_print_space_ad(t_stock *lst, int len)
 
 static char	*ft_dtoa(size_t	nbr, char	*base, size_t len)
 {
-	static size_t i;
-	static char res[20];
-	
+	static size_t	i;
+	static char		res[20];
+
 	res[0] = '0';
 	res[1] = 'x';
 	i = 2;
@@ -54,11 +54,11 @@ static char	*ft_dtoa(size_t	nbr, char	*base, size_t len)
 
 void	ft_print_address(t_stock *lst, size_t address)
 {
-	int len;
-	char *add;
+	int		len;
+	char	*add;
 
-	if (lst->zero_pad == ON || lst->hash == ON ||
-			lst->sign != OFF || lst->precision != OFF)
+	if (lst->zero_pad == ON || lst->hash == ON
+		|| lst->sign != OFF || lst->precision != OFF)
 	{
 		lst->status = ERROR;
 		return ;

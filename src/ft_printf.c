@@ -6,18 +6,18 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 17:23:17 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/02 21:10:32 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	t_stock	*lst;
-	size_t total_length;
+	size_t	total_length;
 
-	if(!fmt)
+	if (!fmt)
 		return (0);
 	lst = (t_stock *)malloc(sizeof(t_stock));
 	if (!lst)

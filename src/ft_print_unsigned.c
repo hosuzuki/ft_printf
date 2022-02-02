@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/01/30 20:20:37 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/02 21:10:31 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@ static int	count_digits(long n)
 	int	i;
 
 	i = 1;
-/*	if (n == INT_MIN)
-		return (11);
-	if (n < 0)
-	{
-		n = n * -1;
-		i++;
-	}
-*/
 	while (n > 9)
 	{
 		n = n / 10;
@@ -71,13 +63,12 @@ char	*ft_itoa_unsigned(long n)
 	return (res);
 }
 
-void ft_print_unsigned(t_stock *lst, unsigned int un_signed)
+void	ft_print_unsigned(t_stock *lst, unsigned int un_signed)
 {
-	int len;
-	long  tmp;
+	int		len;
+	long	tmp;
 	char	*res;
 
-//	printf("un_signed: %u\n", un_signed);
 	tmp = (long)un_signed;
 	len = 1;
 	while (10 <= tmp)
