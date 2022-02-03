@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	ft_printf("[%1s]\n", "");
+	ft_printf("[ %c ]\n", '0');
 
 	printf("[% d]\n", -1);
 	ft_printf("[% d]\n", -1);
