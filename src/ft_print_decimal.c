@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/03 17:40:37 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/03 21:31:28 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	ft_decimal_len(long long tmp)
 void	ft_print_decimal(t_stock *lst, int decimal)
 {
 	int			len;
-	long long	tmp;
 	char		*res;
+	long long	tmp;
 
 	tmp = (long long)decimal;
 	if (decimal < 0)
@@ -39,6 +39,8 @@ void	ft_print_decimal(t_stock *lst, int decimal)
 		tmp *= -1;
 	}
 	len = ft_decimal_len(tmp);
+	if (decimal < 0)
+		len++;
 	res = ft_itoa(decimal);
 	if (lst->left_align == OFF)
 		ft_print_space(lst, len);
