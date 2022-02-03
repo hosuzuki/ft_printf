@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/03 17:43:14 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/03 21:00:58 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_print_left_align_space(t_stock *lst, int len)
 
 void	ft_print_zero_pad(t_stock *lst, int len)
 {
-	if (0 <= lst->width)
+	if (lst->width <= 0)
 	{
 		lst->precision -= len;
 		while (0 < lst->precision)
