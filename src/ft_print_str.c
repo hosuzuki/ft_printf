@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/02 21:22:48 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/03 17:48:26 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 static void	ft_print_space_s(t_stock *lst, int len)
 {
-	if (lst->width > len)
+	if (len < lst->width)
 	{
-		while (lst->width - len > 0)
+		while (0 < lst->width - len)
 		{
 			lst->total_len += write(1, " ", 1);
 			lst->width--;
 		}
 	}
-	else if (lst->precision != OFF && lst->width > lst->precision)
+	else if (lst->precision != OFF && lst->precision < lst->width)
 	{
-		while (lst->width - lst->precision > 0)
+		while (0 < lst->width - lst->precision)
 		{
 			lst->total_len += write(1, " ", 1);
 			lst->width--;
@@ -33,13 +33,11 @@ static void	ft_print_space_s(t_stock *lst, int len)
 	}
 }
 
-void	ft_print_str(t_stock *lst)
+void	ft_print_str(t_stock *lst, char *str)
 {
-	char	*str;
-	int		len;
+	int	len;
 
-	str = va_arg(lst->args, char *);
-	if (str == NULL)
+	if (!str)
 	{
 		lst->total_len += write(1, "(null)", 6);
 		return ;
@@ -47,10 +45,11 @@ void	ft_print_str(t_stock *lst)
 	len = ft_strlen(str);
 	if (lst->left_align == OFF)
 		ft_print_space_s(lst, len);
-	if (lst->precision >= len || lst->precision == OFF)
+	if (len <= lst->precision || lst->precision == OFF)
 		lst->total_len += write(1, str, len);
 	else if (lst->precision < len)
 		lst->total_len += write(1, str, lst->precision);
-	if (lst->left_align == ON)
-		ft_print_space_s(lst, len);
+//	if (lst->left_align == ON)
+//		ft_print_space_s(lst, len);
+	ft_print_left_align_space(lst, len);
 }

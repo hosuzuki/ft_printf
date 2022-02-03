@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/02 21:10:29 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/03 17:53:56 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	ft_isflag(char c)
 		return (0);
 }
 
-void	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
+int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 {
 	if (fmt[i] == 's')
-		ft_print_str(lst);
+		ft_print_str(lst, va_arg(lst->args, char *));
 	else if (fmt[i] == 'c')
-		ft_print_char(lst);
+		ft_print_char(lst, va_arg(lst->args, int));
 	else if (fmt[i] == 'p')
 		ft_print_address(lst, (size_t)va_arg(lst->args, void *));
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
@@ -38,13 +38,13 @@ void	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 	else if (fmt[i] == 'X')
 		ft_print_hex_cap(lst, va_arg(lst->args, int));
 	else if (fmt[i] == '%')
-	{
-		lst->total_len++;
-		write(1, "%", 1);
-	}
+		lst->total_len += write(1, "%", 1);
+	if (lst->status == ERROR)
+		return (ERROR);
+	return (GOOD);
 }
 
-void	ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
+int	ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
 {
 	while (ft_isflag(fmt[*i]) || ft_isdigit(fmt[*i]) || fmt[*i] == '.')
 	{
@@ -61,6 +61,9 @@ void	ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
 		ft_width(fmt, lst, i);
 		ft_precision(fmt, lst, i);
 	}
+	if (lst->status == ERROR)
+		return (ERROR);
+	return (GOOD);
 }
 
 void	ft_init_lst(t_stock *lst)
@@ -75,30 +78,26 @@ void	ft_init_lst(t_stock *lst)
 	lst->precision = OFF;
 }	
 
-size_t	ft_analyze_fmt(const char *fmt, t_stock *lst)
+int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 {
 	size_t	i;
-	size_t	len_fmt;
+	size_t	len;
 
-	len_fmt = ft_strlen(fmt);
+	len = ft_strlen(fmt);
 	i = 0;
-	while (i < len_fmt)
+	while (i < len)
 	{
 		ft_init_lst(lst);
 		if (fmt[i] == '%')
 		{
 			i++;
-			ft_analyze_flag(fmt, lst, &i);
-			if (lst->status == ERROR)
+			if (ERROR == ft_analyze_flag(fmt, lst, &i))
 				return (ERROR);
-			ft_analyze_speci(fmt, lst, i);
-			i++;
+			if (ERROR == ft_analyze_speci(fmt, lst, i++))
+				return (ERROR);
 		}
 		else
-		{
-			lst->total_len += write(1, &fmt[i], 1);
-			i++;
-		}
+			lst->total_len += write(1, &fmt[i++], 1);
 	}
 	return (lst->total_len);
 }

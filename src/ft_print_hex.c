@@ -6,20 +6,20 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/02 21:10:31 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/03 17:45:30 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-void	ft_print_space_hex(t_stock *lst, int len)
+static void	ft_print_space_hex(t_stock *lst, int len)
 {
 	if (lst->hash == ON)
 		lst->width -= 2;
 	if (0 < lst->precision)
 		lst->width -= lst->precision;
-	if (lst->width > 0 && lst->zero_pad == OFF)
+	if (0 < lst->width && lst->zero_pad == OFF)
 	{
 		while (0 < lst->width - len)
 		{
@@ -31,32 +31,20 @@ void	ft_print_space_hex(t_stock *lst, int len)
 
 static char	*ft_dtoh(size_t	nbr, char	*base, size_t len)
 {
-	static ssize_t	i;
+	static size_t	i;
 	static char		res[10];
 
 	i = 0;
-	if (nbr < 0)
-	{
-		res[i++] = '-';
-		res[i] = '\0';
-		ft_dtoh(-nbr, base, len);
-		return (res);
-	}
-	else
-	{
-		if (nbr >= len)
-		{
-			ft_dtoh(nbr / len, base, len);
-		}
-		res[i++] = base[nbr % len];
-		res[i] = '\0';
-		return (res);
-	}
+	if (len <= nbr)
+		ft_dtoh(nbr / len, base, len);
+	res[i++] = base[nbr % len];
+	res[i] = '\0';
+	return (res);
 }
 
-void	ft_print_zero_hex(t_stock *lst, int len)
+static void	ft_print_zero_hex(t_stock *lst, int len)
 {
-	if (lst->precision > 0)
+	if (0 < lst->precision)
 	{
 		while (0 < lst->precision - len)
 		{
@@ -92,8 +80,9 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 	if (lst->hash == ON && decimal != 0)
 		lst->total_len += write(1, "0X", 2);
 	lst->total_len += write(1, hex, len);
-	if (lst->left_align == ON)
-		ft_print_space_hex(lst, len);
+//	if (lst->left_align == ON)
+//		ft_print_space_hex(lst, len);
+	ft_print_left_align_space(lst, len);
 }
 
 void	ft_print_hex(t_stock *lst, unsigned int decimal)
@@ -114,6 +103,7 @@ void	ft_print_hex(t_stock *lst, unsigned int decimal)
 	if (lst->hash == ON && decimal != 0)
 		lst->total_len += write(1, "0x", 2);
 	lst->total_len += write(1, hex, len);
-	if (lst->left_align == ON)
-		ft_print_space_hex(lst, len);
+//	if (lst->left_align == ON)
+//		ft_print_space_hex(lst, len);
+	ft_print_left_align_space(lst, len);
 }

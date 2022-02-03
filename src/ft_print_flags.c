@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/02 21:10:31 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/03 17:43:14 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	ft_print_space(t_stock *lst, int len)
 		lst->total_len += write(1, " ", 1);
 		lst->width--;
 	}
-	else if (lst->width > len && lst->zero_pad == OFF)
+	else if (len < lst->width && lst->zero_pad == OFF)
 	{
-		while (lst->width - len > 0)
+		while (0 < lst->width - len)
 		{
 			lst->total_len += write(1, " ", 1);
 			lst->width--;
 		}
 	}
-	else if (lst->precision > 0 && lst->width > lst->precision)
+	else if (0 < lst->precision && lst->width > lst->precision)
 	{
-		while (lst->width - lst->precision > 0)
+		while (0 < lst->width - lst->precision)
 		{
 			lst->total_len += write(1, " ", 1);
 			lst->width--;
@@ -44,21 +44,21 @@ void	ft_print_sign(t_stock *lst)
 {
 	if (lst->sign == PLUS)
 	{
-		lst->width--;
 		lst->total_len += write(1, "+", 1);
+		lst->width--;
 	}
 	else if (lst->sign == MINUS)
 	{
-		lst->width--;
 		lst->total_len += write(1, "-", 1);
+		lst->width--;
 	}
 }
 
-void	ft_print_left_align(t_stock *lst, int len)
+void	ft_print_left_align_space(t_stock *lst, int len)
 {
 	if (lst->left_align == OFF)
 		return ;
-	while (lst->width - len > 0)
+	while (0 < lst->width - len)
 	{
 		lst->total_len += write(1, " ", 1);
 		lst->width--;
@@ -67,10 +67,10 @@ void	ft_print_left_align(t_stock *lst, int len)
 
 void	ft_print_zero_pad(t_stock *lst, int len)
 {
-	if (lst->width < 1)
+	if (0 <= lst->width)
 	{
 		lst->precision -= len;
-		while (lst->precision > 0)
+		while (0 < lst->precision)
 		{
 			lst->total_len += write(1, "0", 1);
 			lst->precision--;
@@ -78,7 +78,7 @@ void	ft_print_zero_pad(t_stock *lst, int len)
 	}
 	if (lst->zero_pad == OFF)
 		return ;
-	while (lst->width - len > 0)
+	while (0 < lst->width - len)
 	{
 		lst->total_len += write(1, "0", 1);
 		lst->width--;
