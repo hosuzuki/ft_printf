@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/04 17:09:03 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/04 21:56:17 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ static void	ft_print_space_address(t_stock *lst, int len)
 	if (lst->width > 0)
 	{
 		while (0 < lst->width - len)
-		{
-			lst->total_len += write(1, " ", 1);
-			lst->width--;
-		}
+			ft_write(lst, " ", 1);
 	}
 }
 
@@ -55,9 +52,6 @@ void	ft_print_address(t_stock *lst, size_t address)
 	len = ft_strlen(res);
 	if (lst->left_align == OFF)
 		ft_print_space_address(lst, len);
-	lst->total_len += write(1, res, len);
-	lst->width -= len;
-	//	if (lst->left_align == ON)
-//		ft_print_space_address(lst, len);
+	ft_write(lst, res, len);
 	ft_print_left_align_space(lst);
 }

@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/04 17:47:05 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/04 21:53:48 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,12 @@ static void	ft_print_space_hex(t_stock *lst, int len)
 	{
 		tmp += lst->precision;
 		while (0 < lst->width - tmp)
-		{
-			lst->total_len += write(1, " ", 1);
-			lst->width--;
-		}
+			ft_write(lst, " ", 1);
 	}	
 	else if (0 < lst->width)
 	{
 		while (0 < lst->width - tmp - len)
-		{
-			lst->total_len += write(1, " ", 1);
-			lst->width--;
-		}
+			ft_write(lst, " ", 1);
 	}
 }
 
@@ -60,18 +54,14 @@ static void	ft_print_zero_hex(t_stock *lst, int len)
 	{
 		while (0 < lst->precision - len)
 		{
-			lst->total_len += write(1, "0", 1);
+			ft_write(lst, "0", 1);
 			lst->precision--;
-			lst->width--;
 		}
 	}
 	else if (lst->zero_pad == ON)
 	{
 		while (0 < lst->width - len)
-		{
-			lst->total_len += write(1, "0", 1);
-			lst->width--;
-		}
+			ft_write(lst, "0", 1);
 	}
 }
 
@@ -91,14 +81,8 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 		ft_print_space_hex(lst, len);
 	ft_print_zero_hex(lst, len);
 	if (lst->hash == ON && decimal != 0)
-	{
-		lst->total_len += write(1, "0X", 2);
-		lst->width -= 2;
-	}
-	lst->total_len += write(1, hex, len);
-	lst->width -= len;
-	//	if (lst->left_align == ON)
-//		ft_print_space_hex(lst, len);
+		ft_write(lst, "0X", 2);
+	ft_write(lst, hex, len);
 	ft_print_left_align_space(lst);
 }
 
@@ -118,13 +102,7 @@ void	ft_print_hex(t_stock *lst, unsigned int decimal)
 		ft_print_space_hex(lst, len);
 	ft_print_zero_hex(lst, len);
 	if (lst->hash == ON && decimal != 0)
-	{
-		lst->total_len += write(1, "0x", 2);
-		lst->width -= 2;
-	}
-	lst->total_len += write(1, hex, len);
-	lst->width -= len;
-	//	if (lst->left_align == ON)
-//		ft_print_space_hex(lst, len);
+		ft_write(lst, "0x", 2);
+	ft_write(lst, hex, len);
 	ft_print_left_align_space(lst);
 }
