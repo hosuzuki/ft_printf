@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/03 17:20:36 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/04 17:05:47 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void ft_precision(const char *fmt, t_stock *lst, size_t *i);
 void ft_width(const char *fmt, t_stock *lst, size_t *i);
 
 void ft_print_space(t_stock *lst, int len);
+void	ft_print_wid_pre(t_stock *lst, int len);
 void ft_print_sign(t_stock *lst);
-void ft_print_left_align_space(t_stock *lst, int len);
+void ft_print_left_align_space(t_stock *lst);
 void ft_print_zero_pad(t_stock *lst, int len);
 
 #endif
