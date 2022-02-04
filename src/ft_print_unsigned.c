@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/03 17:47:49 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/04 17:12:28 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	ft_print_unsigned(t_stock *lst, unsigned int un_signed)
 	ft_print_sign(lst);
 	ft_print_zero_pad(lst, len);
 	lst->total_len += write(1, res, len);
-	ft_print_left_align_space(lst, len);
+	lst->width -= len;
+	ft_print_left_align_space(lst);
 	free (res);
 }

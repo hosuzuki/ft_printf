@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/03 17:45:30 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/04 17:47:05 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,25 @@
 
 static void	ft_print_space_hex(t_stock *lst, int len)
 {
+	int tmp;
+	
+	if (lst->zero_pad == ON)
+		return ;
+	tmp = 0;
 	if (lst->hash == ON)
-		lst->width -= 2;
+		tmp += 2;
 	if (0 < lst->precision)
-		lst->width -= lst->precision;
-	if (0 < lst->width && lst->zero_pad == OFF)
 	{
-		while (0 < lst->width - len)
+		tmp += lst->precision;
+		while (0 < lst->width - tmp)
+		{
+			lst->total_len += write(1, " ", 1);
+			lst->width--;
+		}
+	}	
+	else if (0 < lst->width)
+	{
+		while (0 < lst->width - tmp - len)
 		{
 			lst->total_len += write(1, " ", 1);
 			lst->width--;
@@ -50,6 +62,7 @@ static void	ft_print_zero_hex(t_stock *lst, int len)
 		{
 			lst->total_len += write(1, "0", 1);
 			lst->precision--;
+			lst->width--;
 		}
 	}
 	else if (lst->zero_pad == ON)
@@ -78,11 +91,15 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 		ft_print_space_hex(lst, len);
 	ft_print_zero_hex(lst, len);
 	if (lst->hash == ON && decimal != 0)
+	{
 		lst->total_len += write(1, "0X", 2);
+		lst->width -= 2;
+	}
 	lst->total_len += write(1, hex, len);
-//	if (lst->left_align == ON)
+	lst->width -= len;
+	//	if (lst->left_align == ON)
 //		ft_print_space_hex(lst, len);
-	ft_print_left_align_space(lst, len);
+	ft_print_left_align_space(lst);
 }
 
 void	ft_print_hex(t_stock *lst, unsigned int decimal)
@@ -101,9 +118,13 @@ void	ft_print_hex(t_stock *lst, unsigned int decimal)
 		ft_print_space_hex(lst, len);
 	ft_print_zero_hex(lst, len);
 	if (lst->hash == ON && decimal != 0)
+	{
 		lst->total_len += write(1, "0x", 2);
+		lst->width -= 2;
+	}
 	lst->total_len += write(1, hex, len);
-//	if (lst->left_align == ON)
+	lst->width -= len;
+	//	if (lst->left_align == ON)
 //		ft_print_space_hex(lst, len);
-	ft_print_left_align_space(lst, len);
+	ft_print_left_align_space(lst);
 }
