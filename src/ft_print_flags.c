@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/04 21:59:48 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/05 12:53:31 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,21 @@ void	ft_print_space(t_stock *lst, int len)
 
 void	ft_print_wid_pre(t_stock *lst, int len)
 {
+	int tmp;
+	
+	tmp = 0;
+	if (lst->sign != OFF)
+		tmp++;
 	if (len < lst->width && lst->zero_pad == OFF)
 	{
-		while (0 < lst->width - len)
+		tmp += len;
+		while (0 < lst->width - tmp)
 			ft_write(lst, " ", 1);
 	}
 	else if (0 < lst->precision && lst->width > lst->precision)
 	{
-		while (0 < lst->width - lst->precision)
+		tmp += lst->precision;
+		while (0 < lst->width - tmp)
 			ft_write(lst, " ", 1);
 	}
 }
@@ -51,11 +58,18 @@ void	ft_print_left_align_space(t_stock *lst)
 
 void	ft_print_zero_pad(t_stock *lst, int len)
 {
+	if (lst->sign == PLUS)
+		len++;
+	if (lst->sign == MINUS)
+		len--;
 	if (lst->width <= 0)
 	{
 		lst->precision -= len;
 		while (0 < lst->precision)
+		{
 			ft_write(lst, "0", 1);
+			lst->precision--;
+		}
 	}
 	if (lst->zero_pad == OFF)
 		return ;

@@ -9,7 +9,8 @@ SRC_F = ft_printf.c \
 			ft_print_hex.c \
 			ft_print_str.c \
 			ft_width_precision.c \
-			ft_print_flags.c
+			ft_print_flags.c \
+			ft_utils.c
 SRC_D = ./src/
 SRC = $(addprefix $(SRC_D), $(SRC_F))
 OBJ = $(SRC:.c=.o)

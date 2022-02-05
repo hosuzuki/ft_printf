@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/04 21:51:02 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/05 13:12:36 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,23 @@ static char	*ft_itoa_unsigned(long n)
 void	ft_print_unsigned(t_stock *lst, unsigned int un_signed)
 {
 	int		len;
-	long	tmp;
+//	long	tmp;
 	char	*res;
 
-	tmp = (long)un_signed;
+/*	tmp = (long)un_signed;
 	len = 1;
 	while (10 <= tmp)
 	{
 		tmp = tmp / 10;
 		len++;
 	}
+*/
 	res = ft_itoa_unsigned((long)un_signed);
-	if (lst->left_align == OFF)
+	len = ft_strlen(res);
+	if (lst->sign != MINUS)
 		ft_print_space(lst, len);
+	if (lst->space == OFF && lst->left_align == OFF)
+		ft_print_wid_pre(lst, len);
 	ft_print_sign(lst);
 	ft_print_zero_pad(lst, len);
 	ft_write(lst, res, len);
