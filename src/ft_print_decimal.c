@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/04 21:37:01 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/06 21:00:50 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,15 @@ void	ft_print_decimal(t_stock *lst, int decimal)
 		lst->sign = MINUS;
 	if (lst->sign != MINUS)
 		ft_print_space(lst, len);
-	if (lst->space == OFF && lst->left_align == OFF)
+//	if (lst->space == OFF || lst->left_align == OFF)
+	if (lst->left_align == OFF)
 		ft_print_wid_pre(lst, len);
 	ft_print_sign(lst);
 	ft_print_zero_pad(lst, len);
 	if (res[0] == '-')
-	{
-		lst->total_len += write(1, res + 1, len - 1);
-		lst->width -= (len - 1);
-	}
+		ft_write(lst, res + 1, len - 1);
 	else
-	{
-		lst->total_len += write(1, res, len);
-		lst->width -= len;
-	}
+		ft_write(lst, res, len);
 	ft_print_left_align_space(lst);
 	free (res);
 }
