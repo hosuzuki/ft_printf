@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/04 21:53:48 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/07 07:14:48 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static void	ft_print_space_hex(t_stock *lst, int len)
 {
-	int tmp;
-	
+	int	tmp;
+
 	if (lst->zero_pad == ON)
 		return ;
 	tmp = 0;
