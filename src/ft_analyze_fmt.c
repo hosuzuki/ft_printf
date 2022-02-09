@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 11:54:42 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/09 13:13:43 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 	else if (fmt[i] == 'X')
 		ft_print_hex_cap(lst, va_arg(lst->args, int));
 	else if (fmt[i] == '%')
-		lst->total_len += write(1, "%", 1);
+		if (ERROR == ft_write(lst, "%", 1))
+				return (ERROR);
 	if (lst->status == ERROR)
 		return (ERROR);
 	return (GOOD);
@@ -46,7 +47,8 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 
 int	ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
 {
-	while (ft_isflag(fmt[*i]) || ft_isdigit(fmt[*i]) || fmt[*i] == '.')
+	while (ft_isflag(fmt[*i]) || ft_isdigit(fmt[*i]) || fmt[*i] == '.'
+			|| fmt[*i] == '*')
 	{
 		if (fmt[*i] == '-')
 			ft_left_align(lst, i);
@@ -60,9 +62,9 @@ int	ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
 			ft_hash(lst, i);
 		ft_width(fmt, lst, i);
 		ft_precision(fmt, lst, i);
+		if (lst->status == ERROR)
+			return (ERROR);
 	}
-	if (lst->status == ERROR)
-		return (ERROR);
 	return (GOOD);
 }
 
@@ -97,9 +99,11 @@ int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 				return (ERROR);
 		}
 		else
-			lst->total_len += write(1, &fmt[i++], 1);
-		if (lst->total_len > INT_MAX)
-			return (ERROR);
+		{
+			if (ERROR == ft_write(lst, (char *)&fmt[i], 1))
+					return (ERROR);
+		}
+						//flst->total_len += write(1, &fmt[i++], 1);
 	}
 	return ((int)lst->total_len);
 }
