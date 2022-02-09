@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/07 07:14:46 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/09 11:54:42 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 		}
 		else
 			lst->total_len += write(1, &fmt[i++], 1);
+		if (lst->total_len > INT_MAX)
+			return (ERROR);
 	}
-	return (lst->total_len);
+	return ((int)lst->total_len);
 }

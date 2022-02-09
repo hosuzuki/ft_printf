@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/04 21:55:30 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/09 11:54:02 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 typedef struct
 {
 	va_list	args;
-	int total_len;
+	size_t total_len;
 	int status;
 	int left_align;
 	int zero_pad;
