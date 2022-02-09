@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 13:21:10 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/09 16:57:53 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct
 	int hash;
 	int sign;
 	int space;
-	size_t width;
-	size_t	precision;
+	int width;
+	int	precision;
 } t_stock;
 
 int	ft_printf(const char *fmt, ...);
@@ -66,6 +66,6 @@ void	ft_print_sign(t_stock *lst);
 void	ft_print_left_align_space(t_stock *lst);
 void	ft_print_zero_pad(t_stock *lst, int len);
 int	ft_write(t_stock *lst, char	*content, int len);
-int	ft_intmax(t_stock *lst, int len);
+int	ft_intmax(t_stock *lst, long total, int len);
 
 #endif
