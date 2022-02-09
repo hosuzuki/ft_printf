@@ -3,6 +3,9 @@
 
 int main(void)
 {
+	printf("return value: %d\n", ft_printf("[%*d]\n", INT_MAX - 2, -1)); // 000
+//	printf("return value :%d\n", printf("[%*d]\n", INT_MAX - 1, -1)); // 000
+/*
 	ft_printf("[%15.10x]\n", 108); // 000
 	printf("[%15.10x]\n", 108); // 000
 
@@ -194,5 +197,7 @@ int main(void)
 
 	ft_printf("[%-15.10x]\n", 108); // 000
 	printf("[%-15.10x]\n", 108); // 000
+
+*/
 	return (0);
 }

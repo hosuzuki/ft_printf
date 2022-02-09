@@ -8,7 +8,7 @@ int main(void)
 	printf(" => %d\n", ft_printf("[%c]", 'a'));
 	printf("\n");
 
-	printf("\x1b[32m'-'flag\n\x1b[39m");
+/*	printf("\x1b[32m'-'flag\n\x1b[39m");
 	printf(" => %d\n", printf("[%-c]", 'a'));
 	printf(" => %d\n", ft_printf("[%-c]", 'a'));
 	printf(" => %d\n", printf("[%-10c]", 'a'));
@@ -94,8 +94,8 @@ int main(void)
 	printf(" => %d\n", printf("[%010.15c]", 'a'));
 	printf(" => %d\n", ft_printf("[%010.15c]", 'a'));
 	printf("\n");
-
-	printf("\x1b[flag combo\n\x1b[39m");
+*/
+	printf("\x1b[32mflag combo\n\x1b[39m");
 	printf("\x1b[32m'-'flag + '+'flag\n\x1b[39m");
 	printf("[%-+d]\n", 1);
 	printf("[%-+d]\n", -1);
@@ -108,7 +108,8 @@ int main(void)
 	printf("[%-+10f]\n", -1.0);
 
 	printf("\n");
-//3: '-'flag + '(space)'flag
+
+	printf("\x1b[32m'-'flag + ' 'flag\n\x1b[39m");
 	printf("[%- d]\n", 1);
 	printf("[%- d]\n", -1);
 	printf("[%- 10d]\n", 1);

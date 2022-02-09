@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 07:14:49 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 16:58:48 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/09 17:09:57 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_intmax(t_stock *lst, long total, int len)
 {
-	if ((long)INT_MAX < (long)total + len)
+	if ((long)INT_MAX - 1 <= total + len)
 	{
 		lst->status = ERROR;
 		return (ERROR);
