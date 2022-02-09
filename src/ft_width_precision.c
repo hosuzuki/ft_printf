@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:41:14 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 13:27:51 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/09 16:57:22 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_precision(const char *fmt, t_stock *lst, size_t *i)
 	if (fmt[*i] == '*')
 	{
 		lst->precision = va_arg(lst->args, int);
-		if (ERROR == ft_intmax(lst->precision, 0);
+		if (ERROR == ft_intmax(lst, lst->precision, 0))
 			lst->status = ERROR;
 		(*i)++;
 		return ;
@@ -36,7 +36,7 @@ void	ft_precision(const char *fmt, t_stock *lst, size_t *i)
 		(*i)++;
 	}
 	lst->precision = len;
-	if (ERROR == ft_intmax(lst->precision, 0);
+	if (ERROR == ft_intmax(lst, lst->precision, 0))
 		lst->status = ERROR;
 }
 
@@ -47,7 +47,7 @@ void	ft_width(const char *fmt, t_stock *lst, size_t *i)
 	if (fmt[*i] == '*')
 	{
 		lst->width = va_arg(lst->args, int);
-		if (ERROR == ft_intmax(lst->width, 0);
+		if (ERROR == ft_intmax(lst, lst->width, 0))
 			lst->status = ERROR;
 		(*i)++;
 		return ;
@@ -60,6 +60,6 @@ void	ft_width(const char *fmt, t_stock *lst, size_t *i)
 		(*i)++;
 	}
 	lst->width = len;
-	if (ERROR == ft_intmax(lst->width, 0);
+	if (ERROR == ft_intmax(lst, lst->width, 0))
 		lst->status = ERROR;
 }

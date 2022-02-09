@@ -6,23 +6,26 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 07:14:49 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 13:23:41 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/09 16:58:48 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-int	ft_intmax(size_t total, int len)
+int	ft_intmax(t_stock *lst, long total, int len)
 {
-	if (INT_MAX < total + len)
+	if ((long)INT_MAX < (long)total + len)
+	{
+		lst->status = ERROR;
 		return (ERROR);
+	}
 	return (GOOD);
 }
 
 int	ft_write(t_stock *lst, char	*content, int len)
 {
-	if (ERROR == ft_intmax(lst->total, len));
+	if (ERROR == ft_intmax(lst, lst->total_len, len))
 		return (ERROR);
 	lst->total_len += write(1, content, len);
 	lst->width -= len;
