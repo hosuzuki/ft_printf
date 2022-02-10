@@ -3,8 +3,52 @@
 
 int main(void)
 {
-	printf("return value: %d\n", ft_printf("[%*d]\n", INT_MAX - 2, -1)); // 000
-//	printf("return value :%d\n", printf("[%*d]\n", INT_MAX - 1, -1)); // 000
+	int i;
+	int j;
+	int a;
+
+	printf("x, ULLONG_MAX - 1\n");
+	i = printf("%x\n", ULLONG_MAX - 1); //fffffffe 
+	printf("return value: %d\n", i); //9
+	i = ft_printf("%x\n", ULLONG_MAX - 1); //fffffffe 
+	printf("return value: %d\n", i); //9
+	printf("\n");
+
+	printf("x, ULLONG_MAX\n");
+	i = printf("%x\n", ULLONG_MAX); //ffffffff (UINT_MAX)
+	printf("return value: %d\n", i); //9
+	i = ft_printf("%x\n", ULLONG_MAX); //ffffffff (UINT_MAX)
+	printf("return value: %d\n", i); //9
+	printf("\n");
+
+	printf("x, ULLONG_MAX + 1\n");
+	i = printf("%x\n", ULLONG_MAX + 1); //ffffffff (UINT_MAX)
+	printf("return value: %d\n", i); //9
+	i = ft_printf("%x\n", ULLONG_MAX + 1); //ffffffff (UINT_MAX)
+	printf("return value: %d\n", i); //9
+	printf("\n");
+
+	printf("x, ULLONG_MAX - 1\n");
+	a = printf("%u\n", ULLONG_MAX- 1); //
+	printf("return value: %d\n", a); //11
+	a = ft_printf("%u\n", ULLONG_MAX- 1); //
+	printf("return value: %d\n", a); //11
+	printf("\n");
+
+	printf("x, ULLONG_MAX\n");
+	a = printf("%u\n", ULLONG_MAX); //42994967295 (UINT_MAX)
+	printf("return value: %d\n", a); //11
+	a = ft_printf("%u\n", ULLONG_MAX); //42994967295 (UINT_MAX)
+	printf("return value: %d\n", a); //11
+	printf("\n");
+
+	printf("x, ULLONG_MAX + 1\n");
+	a = printf("%u\n", ULLONG_MAX + 1); //0
+	printf("return value: %d\n", a); //2
+	a = ft_printf("%u\n", ULLONG_MAX + 1); //0
+	printf("return value: %d\n", a); //2
+//	printf("return value: %d\n", ft_printf("%*d\n", INT_MAX - 1, 1)); // 000
+//	printf("return value :%d\n", printf("%*d\n", INT_MAX - 1, 1)); // 000
 /*
 	ft_printf("[%15.10x]\n", 108); // 000
 	printf("[%15.10x]\n", 108); // 000
