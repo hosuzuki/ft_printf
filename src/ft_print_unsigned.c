@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 13:08:54 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 15:46:07 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	ft_to_alpha(char *res, unsigned int nbr, size_t *i)
 
 static char	*ft_itoa_unsigned(unsigned int nbr)
 {
-	size_t	len;
+	int	len;
 	char		*res;
 	size_t	i;
 
@@ -55,8 +55,8 @@ static char	*ft_itoa_unsigned(unsigned int nbr)
 
 void	ft_print_unsigned(t_stock *lst, unsigned int nbr)
 {
-	char		*res;
-	size_t	len;
+	char	*res;
+	int		len;
 
 	res = ft_itoa_unsigned(nbr);
 	len = ft_strlen(res);

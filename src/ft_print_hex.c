@@ -6,16 +6,16 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 13:07:15 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 15:53:06 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_hex(t_stock *lst, size_t len)
+static void	ft_print_space_hex(t_stock *lst, int len)
 {
-	size_t	tmp;
+	long long	tmp;
 
 	if (lst->zero_pad == ON)
 		return ;
@@ -35,20 +35,20 @@ static void	ft_print_space_hex(t_stock *lst, size_t len)
 	}
 }
 
-static char	*ft_dtoh(size_t	nbr, char	*base, size_t len)
+static char	*ft_dtoh(unsigned int	nbr, char	*base, int len)
 {
 	static size_t	i;
 	static char		res[10];
 
 	i = 0;
-	if (len <= nbr)
+	if ((unsigned int)len <= nbr)
 		ft_dtoh(nbr / len, base, len);
 	res[i++] = base[nbr % len];
 	res[i] = '\0';
 	return (res);
 }
 
-static void	ft_print_zero_hex(t_stock *lst, size_t len)
+static void	ft_print_zero_hex(t_stock *lst, int len)
 {
 	if (0 < lst->precision)
 	{
@@ -67,7 +67,7 @@ static void	ft_print_zero_hex(t_stock *lst, size_t len)
 
 void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 {
-	size_t	len;
+	int	len;
 	char	*hex;
 
 	if (lst->space == ON || lst->sign != OFF)
@@ -88,7 +88,7 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 
 void	ft_print_hex(t_stock *lst, unsigned int decimal)
 {
-	size_t	len;
+	int	len;
 	char	*hex;
 
 	if (lst->space == ON || lst->sign != OFF)

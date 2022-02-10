@@ -6,22 +6,22 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 13:06:05 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 15:36:06 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-void	ft_print_space(t_stock *lst, size_t len)
+void	ft_print_space(t_stock *lst, int len)
 {
 	if (lst->space == ON && len != 0)
 		ft_write(lst, " ", 1);
 }
 
-void	ft_print_wid_pre(t_stock *lst, size_t len)
+void	ft_print_wid_pre(t_stock *lst, int len)
 {
-	size_t	tmp;
+	long long	tmp;
 
 	tmp = 0;
 	if (lst->sign == PLUS)
@@ -56,7 +56,7 @@ void	ft_print_left_align_space(t_stock *lst)
 		ft_write(lst, " ", 1);
 }
 
-void	ft_print_zero_pad(t_stock *lst, size_t len)
+void	ft_print_zero_pad(t_stock *lst, int len)
 {
 	if (lst->sign == PLUS)
 		len++;

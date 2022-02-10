@@ -6,14 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 11:35:56 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 15:51:59 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_address(t_stock *lst, size_t len)
+static void	ft_print_space_address(t_stock *lst, int len)
 {
 	if (lst->width > 0)
 	{
@@ -22,15 +22,15 @@ static void	ft_print_space_address(t_stock *lst, size_t len)
 	}
 }
 
-static char	*ft_dtoa(unsigned long long nbr, char	*base, size_t len)
+static char	*ft_dtoa(unsigned long long nbr, char	*base, int len)
 {
-	static size_t	i;
+	static int	i;
 	static char		res[20];
 
 	res[0] = '0';
 	res[1] = 'x';
 	i = 2;
-	if (len <= nbr)
+	if ((unsigned long long)len <= nbr)
 		ft_dtoa(nbr / len, base, len);
 	res[i++] = base[nbr % len];
 	res[i] = '\0';
@@ -39,7 +39,7 @@ static char	*ft_dtoa(unsigned long long nbr, char	*base, size_t len)
 
 void	ft_print_address(t_stock *lst, unsigned long long address)
 {
-	size_t	len;
+	int	len;
 	char	*res;
 
 	if (lst->zero_pad == ON || lst->hash == ON

@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 13:58:02 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 15:51:19 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 
 	len = ft_strlen(fmt);
 	i = 0;
-	while (i < len)
+	while (i < (size_t)len)
 	{
 		ft_init_lst(lst);
 		if (fmt[i] == '%')
