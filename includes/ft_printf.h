@@ -6,18 +6,15 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 16:12:51 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/11 08:55:06 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdio.h>
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
+# include "../libft/libft.h"
 
 # define ERROR -1
 # define GOOD 0
