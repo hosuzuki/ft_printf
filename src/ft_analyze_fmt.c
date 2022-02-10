@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 17:17:53 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 11:52:21 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 	else if (fmt[i] == 'c')
 		ft_print_char(lst, va_arg(lst->args, int));
 	else if (fmt[i] == 'p')
-		ft_print_address(lst, (size_t)va_arg(lst->args, void *));
+		ft_print_address(lst, (unsigned long long)va_arg(lst->args, void *));
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		ft_print_decimal(lst, va_arg(lst->args, int));
 	else if (fmt[i] == 'u')

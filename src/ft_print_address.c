@@ -6,14 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/07 07:14:46 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 11:35:56 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_address(t_stock *lst, int len)
+static void	ft_print_space_address(t_stock *lst, size_t len)
 {
 	if (lst->width > 0)
 	{
@@ -22,7 +22,7 @@ static void	ft_print_space_address(t_stock *lst, int len)
 	}
 }
 
-static char	*ft_dtoa(size_t	nbr, char	*base, size_t len)
+static char	*ft_dtoa(unsigned long long nbr, char	*base, size_t len)
 {
 	static size_t	i;
 	static char		res[20];
@@ -37,7 +37,7 @@ static char	*ft_dtoa(size_t	nbr, char	*base, size_t len)
 	return (res);
 }
 
-void	ft_print_address(t_stock *lst, size_t address)
+void	ft_print_address(t_stock *lst, unsigned long long address)
 {
 	size_t	len;
 	char	*res;

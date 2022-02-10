@@ -6,16 +6,16 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/07 07:14:48 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 11:58:16 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static int	ft_digit_len(long n)
+static int	ft_digit_len(unsigned int n)
 {
-	int	i;
+	size_t	i;
 
 	i = 1;
 	while (9 < n)
@@ -26,9 +26,10 @@ static int	ft_digit_len(long n)
 	return (i);
 }
 
-static void	ft_to_alpha(char *res, long nbr, int *i)
+static void	ft_to_alpha(char *res, unsigned nbr, size_t *i)
 {
-	if (nbr == INT_MIN)
+/*
+  if (nbr == INT_MIN)
 	{
 		ft_to_alpha(res, nbr / 10, i);
 		res[(*i)++] = '8';
@@ -38,7 +39,8 @@ static void	ft_to_alpha(char *res, long nbr, int *i)
 		res[(*i)++] = '-';
 		ft_to_alpha(res, -nbr, i);
 	}
-	else if (9 < nbr)
+*/
+	if (9 < nbr)
 	{
 		ft_to_alpha(res, nbr / 10, i);
 		ft_to_alpha(res, nbr % 10, i);
@@ -47,11 +49,11 @@ static void	ft_to_alpha(char *res, long nbr, int *i)
 		res[(*i)++] = '0' + nbr;
 }
 
-static char	*ft_itoa_unsigned(long n)
+static char	*ft_itoa_unsigned(unsigned int n)
 {
-	int		len;
-	char	*res;
-	int		i;
+	size_t	len;
+	char		*res;
+	size_t	i;
 
 	len = ft_digit_len(n);
 	res = malloc(sizeof(char) * (len + 1));
@@ -63,21 +65,12 @@ static char	*ft_itoa_unsigned(long n)
 	return (res);
 }
 
-void	ft_print_unsigned(t_stock *lst, unsigned int un_signed)
+void	ft_print_unsigned(t_stock *lst, unsigned int nbr)
 {
-	char	*res;
-	int		len;
-//	long	tmp;
+	char		*res;
+	size_t	len;
 
-/*	tmp = (long)un_signed;
-	len = 1;
-	while (10 <= tmp)
-	{
-		tmp = tmp / 10;
-		len++;
-	}
-*/
-	res = ft_itoa_unsigned((long)un_signed);
+	res = ft_itoa_unsigned(nbr);
 	len = ft_strlen(res);
 	if (lst->sign != MINUS)
 		ft_print_space(lst, len);
