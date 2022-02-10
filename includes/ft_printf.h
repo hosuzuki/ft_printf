@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 16:57:53 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 15:53:51 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@
 typedef struct
 {
 	va_list	args;
-	size_t total_len;
+	unsigned long long total_len;
 	int status;
 	int left_align;
 	int zero_pad;
 	int hash;
 	int sign;
 	int space;
-	int width;
-	int	precision;
+	long long width;
+	long long	precision;
 } t_stock;
 
 int	ft_printf(const char *fmt, ...);
@@ -45,7 +45,7 @@ int	ft_analyze_fmt(const char *fmt, t_stock *lst);
 
 void	ft_print_str(t_stock *lst, char *str);
 void	ft_print_char(t_stock *lst, int c);
-void	ft_print_address(t_stock *lst, size_t address);
+void	ft_print_address(t_stock *lst, unsigned long long address);
 void	ft_print_unsigned(t_stock *lst, unsigned int decimal);
 void	ft_print_decimal(t_stock *lst, int decimal);
 void	ft_print_hex(t_stock *lst, unsigned int decimal);
@@ -66,6 +66,6 @@ void	ft_print_sign(t_stock *lst);
 void	ft_print_left_align_space(t_stock *lst);
 void	ft_print_zero_pad(t_stock *lst, int len);
 int	ft_write(t_stock *lst, char	*content, int len);
-int	ft_intmax(t_stock *lst, long total, int len);
+int	ft_intmax(t_stock *lst, unsigned long long total, int len);
 
 #endif
