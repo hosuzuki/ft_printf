@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 11:52:21 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 13:58:02 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_init_lst(t_stock *lst)
 int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 {
 	size_t	i;
-	size_t	len;
+	int		len;
 
 	len = ft_strlen(fmt);
 	i = 0;

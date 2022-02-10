@@ -6,14 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/07 07:14:48 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 13:07:48 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_s(t_stock *lst, int len)
+static void	ft_print_space_s(t_stock *lst, size_t len)
 {
 	if (len < lst->width)
 	{
@@ -29,7 +29,7 @@ static void	ft_print_space_s(t_stock *lst, int len)
 
 void	ft_print_str(t_stock *lst, char *str)
 {
-	int	len;
+	size_t	len;
 
 	if (!str)
 	{
