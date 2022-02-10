@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 16:50:49 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/11 08:41:36 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ void	ft_print_unsigned(t_stock *lst, unsigned int nbr)
 	int		len;
 
 	res = ft_itoa_un(nbr);
+	if (!res)
+	{
+		lst->status = ERROR;
+		return ;
+	}
 	len = ft_strlen(res);
 	if (lst->sign != MINUS)
 		ft_print_space(lst, len);

@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 15:33:16 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/11 08:36:20 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	ft_print_decimal(t_stock *lst, int decimal)
 	char	*res;
 
 	res = ft_itoa(decimal);
+	if (!res)
+	{
+		lst->status = ERROR;
+		return ;
+	}
 	len = ft_strlen(res);
 	if (decimal < 0)
 		lst->sign = MINUS;

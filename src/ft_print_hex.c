@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 16:03:16 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/11 07:34:28 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static void	ft_print_space_hex(t_stock *lst, int len)
 	}
 }
 
-static char	*ft_dtoh(unsigned int nbr, char *base, int len)
+static char	*ft_dtoh(unsigned int nbr, char *base, unsigned int len)
 {
 	static size_t	i;
 	static char		res[10];
 
 	i = 0;
-	if ((unsigned int)len <= nbr)
+	if (len <= nbr)
 		ft_dtoh(nbr / len, base, len);
 	res[i++] = base[nbr % len];
 	res[i] = '\0';
