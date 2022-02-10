@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 15:46:07 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 16:03:39 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	ft_to_alpha(char *res, unsigned int nbr, size_t *i)
 
 static char	*ft_itoa_unsigned(unsigned int nbr)
 {
-	int	len;
-	char		*res;
+	int		len;
+	char	*res;
 	size_t	i;
 
 	len = ft_digit_len(nbr);

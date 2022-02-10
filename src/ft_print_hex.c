@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 15:53:06 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 16:03:16 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_print_space_hex(t_stock *lst, int len)
 	}
 }
 
-static char	*ft_dtoh(unsigned int	nbr, char	*base, int len)
+static char	*ft_dtoh(unsigned int nbr, char *base, int len)
 {
 	static size_t	i;
 	static char		res[10];
@@ -67,7 +67,7 @@ static void	ft_print_zero_hex(t_stock *lst, int len)
 
 void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 {
-	int	len;
+	int		len;
 	char	*hex;
 
 	if (lst->space == ON || lst->sign != OFF)
@@ -88,7 +88,7 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 
 void	ft_print_hex(t_stock *lst, unsigned int decimal)
 {
-	int	len;
+	int		len;
 	char	*hex;
 
 	if (lst->space == ON || lst->sign != OFF)

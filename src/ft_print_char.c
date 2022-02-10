@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:10:30 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 13:41:24 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 16:02:22 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	ft_print_char(t_stock *lst, int c)
 {
-	char chara;
-	
+	char	chara;
+
 	if (lst->left_align == OFF)
 		ft_print_space(lst, 1);
 	chara = (char)c;

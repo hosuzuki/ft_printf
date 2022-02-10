@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 15:51:19 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/10 16:01:21 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 		ft_print_hex_cap(lst, va_arg(lst->args, int));
 	else if (fmt[i] == '%')
 		if (ERROR == ft_write(lst, "%", 1))
-				return (ERROR);
+			return (ERROR);
 	if (lst->status == ERROR)
 		return (ERROR);
 	return (GOOD);
@@ -48,7 +48,7 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 int	ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
 {
 	while (ft_isflag(fmt[*i]) || ft_isdigit(fmt[*i]) || fmt[*i] == '.'
-			|| fmt[*i] == '*')
+		|| fmt[*i] == '*')
 	{
 		if (fmt[*i] == '-')
 			ft_left_align(lst, i);
@@ -101,10 +101,9 @@ int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 		else
 		{
 			if (ERROR == ft_write(lst, (char *)&fmt[i], 1))
-					return (ERROR);
+				return (ERROR);
 			i++;
 		}
-						//flst->total_len += write(1, &fmt[i++], 1);
 	}
 	return ((int)lst->total_len);
 }
