@@ -1,6 +1,18 @@
-#include"libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/11 11:31:23 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/02/11 11:31:47 by hokutosuz        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int	ft_validate_base(char	*str)
+#include "libft.h"
+
+static int	ft_validate_base(char *str)
 {
 	while (*str)
 	{
@@ -15,7 +27,7 @@ static int	ft_validate_base(char	*str)
 	return (1);
 }
 
-static void	ft_print_body(long	l_nbr, char	*base, int	len)
+static void	ft_print_body(long l_nbr, char *base, int len)
 {
 	if (l_nbr < 0)
 	{
@@ -33,7 +45,7 @@ static void	ft_print_body(long	l_nbr, char	*base, int	len)
 	}
 }
 
-void	ft_putnbr_base(size_t	nbr, char	*base)
+void	ft_putnbr_base(size_t nbr, char *base)
 {
 	int	len;
 
