@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:41:14 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/09 17:24:33 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/14 15:59:30 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ void	ft_width(const char *fmt, t_stock *lst, size_t *i)
 	if (fmt[*i] == '*')
 	{
 		lst->width = va_arg(lst->args, int);
+		if (lst->width < 0)
+		{
+			lst->width = -(lst->width);
+			lst->left_align = ON;
+		}
 		if (ERROR == ft_intmax(lst, lst->total_len, lst->width))
 			lst->status = ERROR;
 		(*i)++;
