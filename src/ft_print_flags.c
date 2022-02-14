@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/14 20:55:46 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/15 08:53:27 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,22 @@ void	ft_print_wid_pre(t_stock *lst, int len)
 	if (lst->sign == PLUS)
 		tmp++;
 	if (lst->zero_pad == ON && lst->width < lst->precision) 
-		return;
-	else if (len < lst->width && lst->zero_pad == OFF)
+		return ;
+	if (lst->zero_pad == ON && lst->precision < 0)
+		return ;
+	//	else if (len < lst->width && lst->zero_pad == OFF)
 //	if (len < lst->width && lst->zero_pad == OFF)
-//	if (len < lst->width)
+	if (len < lst->width)
 	{
 		tmp += len;
 		while (0 < lst->width - tmp)
 			ft_write(lst, " ", 1);
 	}
-	else if (0 < lst->precision && lst->precision < lst->width)
+//	else if (0 < lst->precision && lst->precision < lst->width)
+	else if (0 < lst->precision && lst->precision < lst->width && len < lst->width)
 	{
+		if (lst->sign == MINUS)
+			tmp++;
 		tmp += lst->precision;
 		while (0 < lst->width - tmp)
 			ft_write(lst, " ", 1);
