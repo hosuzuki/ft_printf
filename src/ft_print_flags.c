@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/12 08:23:26 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/14 12:47:49 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ void	ft_print_zero_pad(t_stock *lst, int len)
 		len--;
 	if (lst->width <= 0 && lst->precision != 0)
 	{
-		lst->precision -= len;
-		while (0 < lst->precision)
+		while (0 < lst->precision - len)
 		{
 			ft_write(lst, "0", 1);
 			lst->precision--;
