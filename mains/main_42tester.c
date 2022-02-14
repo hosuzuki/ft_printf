@@ -33,12 +33,37 @@ int main(void)
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
+	
+	PRINT(" --- Return : %d\n", PRINT("[%02i]\n", i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%2i]\n", i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0*.*i]\n", 2, 0, i)); //T23
+PRINT(" --- Return : %d\n", PRINT("[%*.*i]\n", -2, 2, i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0*i]\n", -4, i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%0*i, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", -4, -2, 8)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", 1, 2, 8)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+	PRINT(" --- Return : %d\n", PRINT("[%.1d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%1.1d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%.1i, %.1d, %.1d, %.1d, %.1d, %.1d, %.1d, %.1d", i, j, k, l, m, c, e, d)); //T24
+	PRINT(" --- Return : %d\n", PRINT("[%0.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%1.i, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d", i, j, k, l, m, c, e, d)); //T23
+PRINT(" --- Return : %d\n", PRINT("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d", i, j, k, l, m, c, e, d)); //T12
+	PRINT(" --- Return : %d\n", PRINT("[%1.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%1.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%10.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%10.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%1.i, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d", i, j, k, l, m, c, e, d)); //T23
+//	PRINT(" --- Return : %d\n", PRINT("%0-i, %0-d, %0-d, %0-d, %0-d, %0-d, %0-d, %0-d", i, j, k, l, m, c, e, d)); //T16
+//	printf(" --- Return : %d\n", PRINT("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d", i, j, k, l, m, c, e, d)); //T6
 
-	printf(" --- Return : %d\n", PRINT("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d", i, j, k, l, m, c, e, d)); //T6
 
 
-
-	printf(" => %d\n", printf("%.0d", 123));
+/*	printf(" => %d\n", printf("%.0d", 123));
 	printf(" => %d\n", ft_printf("%.0d", 123));
 
 	printf(" => %d\n", printf("%0.d", l));
@@ -49,6 +74,7 @@ int main(void)
 
 	printf(" => %d\n", printf("%.d", l));
 	printf(" => %d\n", ft_printf("%.d", l));
+*/
 	(void)r;
 	(void)n;
 	(void)p;

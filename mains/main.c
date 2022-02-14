@@ -14,6 +14,20 @@ int main(void)
 	int j;
 	int a;
 
+	printf("d, ULLONG_MAX - 1\n");
+	i = printf("%d\n", ULLONG_MAX - 1); //
+	printf("return value: %d\n", i); //
+	i = ft_printf("%d\n", ULLONG_MAX - 1); //
+	printf("return value: %d\n", i); //
+	printf("\n");
+
+	printf("d, ULLONG_MAX\n");
+	i = printf("%d\n", ULLONG_MAX); //
+	printf("return value: %d\n", i); //
+	i = ft_printf("%d\n", ULLONG_MAX); //
+	printf("return value: %d\n", i); //
+	printf("\n");
+
 	printf("x, ULLONG_MAX - 1\n");
 	i = printf("%x\n", ULLONG_MAX - 1); //fffffffe 
 	printf("return value: %d\n", i); //9
