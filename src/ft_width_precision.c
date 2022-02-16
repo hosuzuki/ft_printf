@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:41:14 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 07:49:58 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 16:39:26 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	ft_precision(const char *fmt, t_stock *lst, size_t *i)
 	(*i)++;
 	if (fmt[*i] == '*')
 	{
-		lst->precision = va_arg(lst->args, long long);
-		if (ERROR == ft_intmax(lst, lst->total_len, lst->precision))
-			lst->status = ERROR;
+		lst->precision = va_arg(lst->args, int);
 		(*i)++;
 		return ;
 	}
@@ -46,7 +44,7 @@ void	ft_width(const char *fmt, t_stock *lst, size_t *i)
 
 	if (fmt[*i] == '*')
 	{
-		lst->width = va_arg(lst->args, long long);
+		lst->width = va_arg(lst->args, int);
 		if (lst->width < 0)
 		{
 			lst->width = -(lst->width);

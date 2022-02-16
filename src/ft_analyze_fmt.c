@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 12:07:52 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 15:57:17 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,29 @@ int	ft_isflag(char c)
 		return (0);
 }
 
-int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
+int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t *i)
 {
-	if (fmt[i] == 's')
+	if (fmt[*i] == 's')
 		ft_print_str(lst, va_arg(lst->args, char *));
-	else if (fmt[i] == 'c')
+	else if (fmt[*i] == 'c')
 		ft_print_char(lst, va_arg(lst->args, int));
-	else if (fmt[i] == 'p')
+	else if (fmt[*i] == 'p')
 		ft_print_address(lst, (size_t)va_arg(lst->args, void *));
-	else if (fmt[i] == 'd' || fmt[i] == 'i')
+	else if (fmt[*i] == 'd' || fmt[*i] == 'i')
 		ft_print_decimal(lst, va_arg(lst->args, int));
-	else if (fmt[i] == 'u')
+	else if (fmt[*i] == 'u')
 		ft_print_unsigned(lst, va_arg(lst->args, size_t));
-	else if (fmt[i] == 'x')
+	else if (fmt[*i] == 'x')
 		ft_print_hex(lst, va_arg(lst->args, size_t));
-	else if (fmt[i] == 'X')
+	else if (fmt[*i] == 'X')
 		ft_print_hex_cap(lst, va_arg(lst->args, size_t));
-	else if (fmt[i] == '%')
+	else if (fmt[*i] == '%')
+	{
 		if (ERROR == ft_write(lst, "%", 1))
 			return (ERROR);
+	}
+	else
+		(*i)--;
 	if (lst->status == ERROR)
 		return (ERROR);
 	return (GOOD);
@@ -95,8 +99,9 @@ int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 			i++;
 			if (ERROR == ft_analyze_flag(fmt, lst, &i))
 				return (ERROR);
-			if (ERROR == ft_analyze_speci(fmt, lst, i++))
+			if (ERROR == ft_analyze_speci(fmt, lst, &i))
 				return (ERROR);
+			i++;
 		}
 		else
 		{
