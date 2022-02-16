@@ -1,5 +1,6 @@
 #include "../includes/ft_printf.h"
 #include <limits.h>
+#include <stdio.h>
 
 void end(void)__attribute__((destructor));
 

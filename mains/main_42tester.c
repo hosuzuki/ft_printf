@@ -33,6 +33,17 @@ int main(void)
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
+
+	PRINT(" --- Return : %d\n", PRINT("[%4d]\n", j)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%3.2d]\n", i)); //T23
+//"%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d" // 1st '*' = 3, 2nd '*' = 2
+	PRINT(" --- Return : %d\n", PRINT("[%4d]\n", j)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d", i, j, k, l, m, c, e, d)); //T7
+	PRINT(" --- Return : %d\n", PRINT("[%*.*i]\n", 3, 2, a)); //T23
+//	"%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d" // 1st '*' = 3, 2nd '*' = 2
+	
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", 2, 1, k)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", 2, 1, j)); //T23
 	
 	PRINT(" --- Return : %d\n", PRINT("[%02i]\n", i)); //T23
 	PRINT(" --- Return : %d\n", PRINT("[%2i]\n", i)); //T23
