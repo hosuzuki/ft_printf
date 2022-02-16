@@ -6,14 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/11 07:34:28 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 08:25:33 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_hex(t_stock *lst, int len)
+static void	ft_print_space_hex(t_stock *lst, size_t len)
 {
 	long long	tmp;
 
@@ -30,12 +30,12 @@ static void	ft_print_space_hex(t_stock *lst, int len)
 	}	
 	else if (0 < lst->width)
 	{
-		while (0 < lst->width - tmp - len)
+		while (0 < lst->width - tmp - (long long)len)
 			ft_write(lst, " ", 1);
 	}
 }
 
-static char	*ft_dtoh(unsigned int nbr, char *base, unsigned int len)
+static char	*ft_dtoh(size_t nbr, char *base, size_t len)
 {
 	static size_t	i;
 	static char		res[10];
@@ -48,7 +48,7 @@ static char	*ft_dtoh(unsigned int nbr, char *base, unsigned int len)
 	return (res);
 }
 
-static void	ft_print_zero_hex(t_stock *lst, int len)
+static void	ft_print_zero_hex(t_stock *lst, size_t len)
 {
 	if (0 < lst->precision)
 	{
@@ -65,16 +65,11 @@ static void	ft_print_zero_hex(t_stock *lst, int len)
 	}
 }
 
-void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
+void	ft_print_hex_cap(t_stock *lst, size_t decimal)
 {
-	int		len;
+	size_t		len;
 	char	*hex;
 
-	if (lst->space == ON || lst->sign != OFF)
-	{
-		lst->status = ERROR;
-		return ;
-	}
 	hex = ft_dtoh(decimal, "0123456789ABCDEF", 16);
 	len = ft_strlen(hex);
 	if (lst->left_align == OFF)
@@ -86,16 +81,11 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 	ft_print_left_align_space(lst);
 }
 
-void	ft_print_hex(t_stock *lst, unsigned int decimal)
+void	ft_print_hex(t_stock *lst, size_t decimal)
 {
-	int		len;
+	size_t		len;
 	char	*hex;
 
-	if (lst->space == ON || lst->sign != OFF)
-	{
-		lst->status = ERROR;
-		return ;
-	}
 	hex = ft_dtoh(decimal, "0123456789abcdef", 16);
 	len = ft_strlen(hex);
 	if (lst->left_align == OFF)

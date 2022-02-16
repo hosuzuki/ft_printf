@@ -6,19 +6,19 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/15 13:47:13 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 12:13:26 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_wp_space(t_stock *lst, int len)
+static void	ft_print_wp_space(t_stock *lst, size_t len)
 {
 	long long	tmp;
 
 	tmp = 0;
-	if (lst->sign == PLUS)
+	if (lst->sign != OFF)
 		tmp++;
 	if (lst->zero_pad == ON && lst->width < lst->precision) 
 		return ;
@@ -26,22 +26,22 @@ static void	ft_print_wp_space(t_stock *lst, int len)
 		return ;
 	//	else if (len < lst->width && lst->zero_pad == OFF)
 //	if (len < lst->width && lst->zero_pad == OFF)
-	if (len < lst->width)
+	if ((long long)len < lst->width)
 	{
 		if (0 < lst->precision && 0 < lst->width - lst->precision && lst->sign == MINUS)
 		 tmp += lst->width - lst->precision;
-		if (lst->precision < len)
+		if (lst->precision < (long long)len)
 			tmp += len;
-		else if (0 < lst->precision && len < lst->precision)
+		else if (0 < lst->precision && (long long)len < lst->precision)
 			tmp += lst ->precision;
 			while (0 < lst->width - tmp)
 			ft_write(lst, " ", 1);
 	}
 //	else if (0 < lst->precision && lst->precision < lst->width)
-	else if (0 < lst->precision && lst->precision < lst->width && len < lst->width)
+	else if (0 < lst->precision && lst->precision < lst->width && (long long)len < lst->width)
 	{
-		if (lst->sign == MINUS)
-			tmp++;
+//		if (lst->sign == MINUS)
+	//		tmp++;
 		tmp += lst->precision;
 		while (0 < lst->width - tmp)
 			ft_write(lst, " ", 1);
@@ -50,24 +50,27 @@ static void	ft_print_wp_space(t_stock *lst, int len)
 
 void	ft_print_decimal(t_stock *lst, int decimal)
 {
-	int		len;
+	size_t	len;
+	size_t	u;
 	char	*res;
 
-/*	if (decimal < 0)
+	if (decimal < 0)
 	{
+//		if (INT_MIN <= decimal)
 		lst->sign = MINUS;
-		decimal = -decimal;
+		u = (size_t)-decimal;
 	}
-*/
-	res = ft_itoa(decimal);
+	else
+		u = (size_t)decimal;
+	res = ft_itoa(u);
 	if (!res)
 	{
 		lst->status = ERROR;
 		return ;
 	}
 	len = ft_strlen(res);
-	if (decimal < 0)
-		lst->sign = MINUS;
+//	if (decimal < 0)
+//		lst->sign = MINUS;
 	if (lst->sign != MINUS)
 		ft_print_space(lst, len);
 	if (lst->left_align == OFF && lst->precision < lst->width)

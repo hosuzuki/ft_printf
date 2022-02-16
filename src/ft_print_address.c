@@ -6,48 +6,42 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 16:04:08 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 08:15:28 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_address(t_stock *lst, int len)
+static void	ft_print_space_address(t_stock *lst, size_t len)
 {
-	if (lst->width > 0)
+	if (0 < lst->width)
 	{
-		while (0 < lst->width - len)
+		while (0 < lst->width - (long long)len)
 			ft_write(lst, " ", 1);
 	}
 }
 
-static char	*ft_dtoa(unsigned long long nbr, char	*base, int len)
+static char	*ft_dtoa(size_t nbr, char	*base, size_t len)
 {
-	static int	i;
+	static size_t	i;
 	static char	res[20];
 
 	res[0] = '0';
 	res[1] = 'x';
 	i = 2;
-	if ((unsigned long long)len <= nbr)
+	if (len <= nbr)
 		ft_dtoa(nbr / len, base, len);
 	res[i++] = base[nbr % len];
 	res[i] = '\0';
 	return (res);
 }
 
-void	ft_print_address(t_stock *lst, unsigned long long address)
+void	ft_print_address(t_stock *lst, size_t address)
 {
-	int		len;
+	size_t	len;
 	char	*res;
 
-	if (lst->zero_pad == ON || lst->hash == ON
-		|| lst->sign != OFF || lst->precision != OFF)
-	{
-		lst->status = ERROR;
-		return ;
-	}
 	res = ft_dtoa(address, "0123456789abcdef", 16);
 	len = ft_strlen(res);
 	if (lst->left_align == OFF)

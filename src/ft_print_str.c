@@ -6,18 +6,18 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/10 15:38:00 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 08:31:00 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_s(t_stock *lst, int len)
+static void	ft_print_space_s(t_stock *lst, size_t len)
 {
-	if (len < lst->width)
+	if ((long long)len < lst->width)
 	{
-		while (0 < lst->width - len)
+		while (0 < lst->width - (long long)len)
 			ft_write(lst, " ", 1);
 	}
 	else if (lst->precision != OFF && lst->precision < lst->width)
@@ -29,7 +29,7 @@ static void	ft_print_space_s(t_stock *lst, int len)
 
 void	ft_print_str(t_stock *lst, char *str)
 {
-	int	len;
+	size_t	len;
 
 	if (!str)
 	{
@@ -39,9 +39,9 @@ void	ft_print_str(t_stock *lst, char *str)
 	len = ft_strlen(str);
 	if (lst->left_align == OFF)
 		ft_print_space_s(lst, len);
-	if (len <= lst->precision || lst->precision == OFF)
+	if ((long long)len <= lst->precision || lst->precision == OFF)
 		ft_write(lst, str, len);
-	else if (lst->precision < len)
+	else if (lst->precision < (long long)len)
 		ft_write(lst, str, lst->precision);
 	ft_print_left_align_space(lst);
 }

@@ -6,20 +6,20 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/15 11:54:10 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 08:31:47 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-void	ft_print_space(t_stock *lst, int len)
+void	ft_print_space(t_stock *lst, size_t len)
 {
 	if (lst->space == ON && len != 0)
 		ft_write(lst, " ", 1);
 }
 
-void	ft_print_wid_pre(t_stock *lst, int len)
+void	ft_print_wid_pre(t_stock *lst, size_t len)
 {
 	long long	tmp;
 
@@ -32,7 +32,7 @@ void	ft_print_wid_pre(t_stock *lst, int len)
 		return ;
 	//	else if (len < lst->width && lst->zero_pad == OFF)
 //	if (len < lst->width && lst->zero_pad == OFF)
-	if (len < lst->width)
+	if ((long long)len < lst->width)
 	{
 //		if (0 < lst->width - lst->precision && lst->sign == MINUS)
 //		 tmp += lst->width - lst->precision;
@@ -41,7 +41,7 @@ void	ft_print_wid_pre(t_stock *lst, int len)
 			ft_write(lst, " ", 1);
 	}
 //	else if (0 < lst->precision && lst->precision < lst->width)
-	else if (0 < lst->precision && lst->precision < lst->width && len < lst->width)
+	else if (0 < lst->precision && lst->precision < lst->width && (long long)len < lst->width)
 	{
 		if (lst->sign == MINUS)
 			tmp++;
@@ -67,7 +67,7 @@ void	ft_print_left_align_space(t_stock *lst)
 		ft_write(lst, " ", 1);
 }
 
-void	ft_print_zero_pad(t_stock *lst, int len)
+void	ft_print_zero_pad(t_stock *lst, size_t len)
 {
 	if (lst->sign == PLUS)
 		len++;

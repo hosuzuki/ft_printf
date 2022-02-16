@@ -6,14 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/11 08:41:36 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 08:21:29 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static int	ft_digit_len(unsigned int n)
+static int	ft_digit_len(size_t n)
 {
 	size_t	i;
 
@@ -26,7 +26,7 @@ static int	ft_digit_len(unsigned int n)
 	return (i);
 }
 
-static void	ft_dtoa_un(char *res, unsigned int nbr, size_t *i)
+static void	ft_dtoa_un(char *res, size_t nbr, size_t *i)
 {
 	if (9 < nbr)
 	{
@@ -37,9 +37,9 @@ static void	ft_dtoa_un(char *res, unsigned int nbr, size_t *i)
 		res[(*i)++] = '0' + nbr;
 }
 
-static char	*ft_itoa_un(unsigned int nbr)
+static char	*ft_itoa_un(size_t nbr)
 {
-	int		len;
+	size_t	len;
 	char	*res;
 	size_t	i;
 
@@ -53,10 +53,10 @@ static char	*ft_itoa_un(unsigned int nbr)
 	return (res);
 }
 
-void	ft_print_unsigned(t_stock *lst, unsigned int nbr)
+void	ft_print_unsigned(t_stock *lst, size_t nbr)
 {
 	char	*res;
-	int		len;
+	size_t		len;
 
 	res = ft_itoa_un(nbr);
 	if (!res)

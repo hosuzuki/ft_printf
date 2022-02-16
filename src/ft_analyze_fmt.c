@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/11 11:16:16 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 12:07:52 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t i)
 	else if (fmt[i] == 'c')
 		ft_print_char(lst, va_arg(lst->args, int));
 	else if (fmt[i] == 'p')
-		ft_print_address(lst, (unsigned long long)va_arg(lst->args, void *));
+		ft_print_address(lst, (size_t)va_arg(lst->args, void *));
 	else if (fmt[i] == 'd' || fmt[i] == 'i')
 		ft_print_decimal(lst, va_arg(lst->args, int));
 	else if (fmt[i] == 'u')
-		ft_print_unsigned(lst, va_arg(lst->args, unsigned int));
+		ft_print_unsigned(lst, va_arg(lst->args, size_t));
 	else if (fmt[i] == 'x')
-		ft_print_hex(lst, va_arg(lst->args, unsigned int));
+		ft_print_hex(lst, va_arg(lst->args, size_t));
 	else if (fmt[i] == 'X')
-		ft_print_hex_cap(lst, va_arg(lst->args, unsigned int));
+		ft_print_hex_cap(lst, va_arg(lst->args, size_t));
 	else if (fmt[i] == '%')
 		if (ERROR == ft_write(lst, "%", 1))
 			return (ERROR);
@@ -82,8 +82,8 @@ void	ft_init_lst(t_stock *lst)
 
 int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 {
-	size_t	i;
-	int		len;
+	size_t		i;
+	long long	len;
 
 	len = ft_strlen(fmt);
 	i = 0;
