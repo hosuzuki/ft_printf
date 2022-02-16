@@ -1,16 +1,16 @@
 NAME = libftprintf.a
 SRC_F = ft_printf.c \
 			ft_analyze_fmt.c \
-			ft_analyze_flags.c \
+			ft_turnon_flags.c \
+			ft_save_width_preci.c \
 			ft_print_address.c \
 			ft_print_char.c \
 			ft_print_decimal.c \
 			ft_print_unsigned.c \
 			ft_print_hex.c \
 			ft_print_str.c \
-			ft_width_precision.c \
 			ft_print_flags.c \
-			ft_utils.c
+			ft_write_utils.c
 SRC_D = ./src/
 SRC = $(addprefix $(SRC_D), $(SRC_F))
 OBJ = $(SRC:.c=.o)

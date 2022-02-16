@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 20:27:13 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 20:59:19 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ void	ft_print_unsigned(t_stock *lst, unsigned int decimal);
 void	ft_print_decimal(t_stock *lst, int decimal);
 void	ft_print_hex(t_stock *lst, unsigned int decimal);
 void	ft_print_hex_cap(t_stock *lst, unsigned int decimal);
-void	ft_left_align(t_stock *lst, size_t *i);
-void	ft_zero_pad(t_stock *lst, size_t *i);
-void	ft_sign(t_stock *lst, size_t *i);
-void	ft_space(t_stock *lst, size_t *i);
-void	ft_hash(t_stock *lst, size_t *i);
+void	ft_turnon_left_align(t_stock *lst, size_t *i);
+void	ft_turnon_zero_pad(t_stock *lst, size_t *i);
+void	ft_turnon_sign(t_stock *lst, size_t *i);
+void	ft_turnon_space(t_stock *lst, size_t *i);
+void	ft_turnon_hash(t_stock *lst, size_t *i);
 
-void	ft_precision(const char *fmt, t_stock *lst, size_t *i);
-void	ft_width(const char *fmt, t_stock *lst, size_t *i);
+void	ft_save_precision(const char *fmt, t_stock *lst, size_t *i);
+void	ft_save_width(const char *fmt, t_stock *lst, size_t *i);
 
 void	ft_print_space(t_stock *lst, size_t len);
 void	ft_print_wid_pre(t_stock *lst, size_t len);
@@ -62,6 +62,6 @@ void	ft_print_sign(t_stock *lst);
 void	ft_print_left_align_space(t_stock *lst);
 void	ft_print_zero_pad(t_stock *lst, size_t len);
 int		ft_write(t_stock *lst, char	*content, size_t len);
-int		ft_intmax(t_stock *lst, size_t total, size_t len);
+int		ft_under_intmax(t_stock *lst, size_t total, size_t len);
 
 #endif
