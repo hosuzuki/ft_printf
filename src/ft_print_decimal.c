@@ -6,14 +6,14 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 20:35:40 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 21:05:39 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-static void	ft_print_space_deci(t_stock *lst, size_t len)
+static void	ft_print_space_deci(t_stock *lst, size_t len, long long tmp)
 {
 	if ((long long)len < lst->width)
 	{
@@ -36,16 +36,16 @@ static void	ft_print_space_deci(t_stock *lst, size_t len)
 	}
 }
 
-static void	ft_print_wp_space(t_stock *lst, size_t len)
+static void	ft_print_width_preci_space_deci(t_stock *lst, size_t len)
 {
 	long long	tmp;
 
-	tmp = 0;
 	if (lst->zero_pad == ON && lst->width < lst->precision)
 		return ;
 	if (lst->zero_pad == ON && lst->precision < 0)
 		return ;
-	ft_print_space_deci(lst, len);
+	tmp = 0;
+	ft_print_space_deci(lst, len, tmp);
 }
 
 static void	ft_print_flags_before_deci(t_stock *lst, size_t len)
@@ -53,7 +53,7 @@ static void	ft_print_flags_before_deci(t_stock *lst, size_t len)
 	if (lst->sign != MINUS)
 		ft_print_space(lst, len);
 	if (lst->left_align == OFF && lst->precision < lst->width)
-		ft_print_wp_space(lst, len);
+		ft_print_width_preci_space_deci(lst, len);
 	ft_print_sign(lst);
 	ft_print_zero_pad(lst, len);
 }

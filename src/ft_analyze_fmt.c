@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 15:57:17 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 20:58:42 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,23 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t *i)
 	return (GOOD);
 }
 
-int	ft_analyze_flag(const char *fmt, t_stock *lst, size_t *i)
+int	ft_analyze_flags(const char *fmt, t_stock *lst, size_t *i)
 {
 	while (ft_isflag(fmt[*i]) || ft_isdigit(fmt[*i]) || fmt[*i] == '.'
 		|| fmt[*i] == '*')
 	{
 		if (fmt[*i] == '-')
-			ft_left_align(lst, i);
+			ft_turnon_left_align(lst, i);
 		else if (fmt[*i] == '0')
-			ft_zero_pad(lst, i);
+			ft_turnon_zero_pad(lst, i);
 		else if (fmt[*i] == '+')
-			ft_sign(lst, i);
+			ft_turnon_sign(lst, i);
 		else if (fmt[*i] == ' ')
-			ft_space(lst, i);
+			ft_turnon_space(lst, i);
 		else if (fmt[*i] == '#')
-			ft_hash(lst, i);
-		ft_width(fmt, lst, i);
-		ft_precision(fmt, lst, i);
+			ft_turnon_hash(lst, i);
+		ft_save_width(fmt, lst, i);
+		ft_save_precision(fmt, lst, i);
 		if (lst->status == ERROR)
 			return (ERROR);
 	}
@@ -86,18 +86,18 @@ void	ft_init_lst(t_stock *lst)
 
 int	ft_analyze_fmt(const char *fmt, t_stock *lst)
 {
-	size_t		i;
-	long long	len;
+	size_t	i;
+	size_t	len;
 
 	len = ft_strlen(fmt);
 	i = 0;
-	while (i < (size_t)len)
+	while (i < len)
 	{
 		ft_init_lst(lst);
 		if (fmt[i] == '%')
 		{
 			i++;
-			if (ERROR == ft_analyze_flag(fmt, lst, &i))
+			if (ERROR == ft_analyze_flags(fmt, lst, &i))
 				return (ERROR);
 			if (ERROR == ft_analyze_speci(fmt, lst, &i))
 				return (ERROR);
