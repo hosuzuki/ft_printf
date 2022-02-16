@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 12:44:10 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 15:11:30 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	ft_print_zero_hex(t_stock *lst, size_t len)
 {
 	if (0 < lst->precision)
 	{
-		while (0 < lst->precision - len)
+		while (0 < lst->precision - (long long)len)
 		{
 			ft_write(lst, "0", 1);
 			lst->precision--;
@@ -60,7 +60,7 @@ static void	ft_print_zero_hex(t_stock *lst, size_t len)
 	}
 	else if (lst->zero_pad == ON)
 	{
-		while (0 < lst->width - len)
+		while (0 < lst->width - (long long)len)
 			ft_write(lst, "0", 1);
 	}
 }
