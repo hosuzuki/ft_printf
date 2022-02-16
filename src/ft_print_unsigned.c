@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 08:21:29 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 12:43:00 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	ft_dtoa_un(char *res, size_t nbr, size_t *i)
 		res[(*i)++] = '0' + nbr;
 }
 
-static char	*ft_itoa_un(size_t nbr)
+static char	*ft_itoa_un(unsigned int nbr)
 {
 	size_t	len;
 	char	*res;
@@ -53,7 +53,7 @@ static char	*ft_itoa_un(size_t nbr)
 	return (res);
 }
 
-void	ft_print_unsigned(t_stock *lst, size_t nbr)
+void	ft_print_unsigned(t_stock *lst, unsigned int nbr)
 {
 	char	*res;
 	size_t		len;

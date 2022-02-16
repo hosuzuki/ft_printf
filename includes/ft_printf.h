@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 12:12:56 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 12:42:53 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int		ft_analyze_fmt(const char *fmt, t_stock *lst);
 void	ft_print_str(t_stock *lst, char *str);
 void	ft_print_char(t_stock *lst, int c);
 void	ft_print_address(t_stock *lst, size_t address);
-void	ft_print_unsigned(t_stock *lst, size_t decimal);
+void	ft_print_unsigned(t_stock *lst, unsigned int decimal);
 void	ft_print_decimal(t_stock *lst, int decimal);
-void	ft_print_hex(t_stock *lst, size_t decimal);
-void	ft_print_hex_cap(t_stock *lst, size_t decimal);
+void	ft_print_hex(t_stock *lst, unsigned int decimal);
+void	ft_print_hex_cap(t_stock *lst, unsigned int decimal);
 void	ft_left_align(t_stock *lst, size_t *i);
 void	ft_zero_pad(t_stock *lst, size_t *i);
 void	ft_sign(t_stock *lst, size_t *i);

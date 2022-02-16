@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 12:13:26 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 12:25:10 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,17 @@ static void	ft_print_wp_space(t_stock *lst, size_t len)
 void	ft_print_decimal(t_stock *lst, int decimal)
 {
 	size_t	len;
-	size_t	u;
 	char	*res;
 
-	if (decimal < 0)
-	{
-//		if (INT_MIN <= decimal)
-		lst->sign = MINUS;
-		u = (size_t)-decimal;
-	}
-	else
-		u = (size_t)decimal;
-	res = ft_itoa(u);
+	res = ft_itoa(decimal);
 	if (!res)
 	{
 		lst->status = ERROR;
 		return ;
 	}
 	len = ft_strlen(res);
-//	if (decimal < 0)
-//		lst->sign = MINUS;
+	if (decimal < 0)
+		lst->sign = MINUS;
 	if (lst->sign != MINUS)
 		ft_print_space(lst, len);
 	if (lst->left_align == OFF && lst->precision < lst->width)

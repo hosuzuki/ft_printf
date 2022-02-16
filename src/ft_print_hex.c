@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 08:25:33 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 12:44:10 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_print_space_hex(t_stock *lst, size_t len)
 	}
 }
 
-static char	*ft_dtoh(size_t nbr, char *base, size_t len)
+static char	*ft_dtoh(unsigned int nbr, char *base, size_t len)
 {
 	static size_t	i;
 	static char		res[10];
@@ -65,7 +65,7 @@ static void	ft_print_zero_hex(t_stock *lst, size_t len)
 	}
 }
 
-void	ft_print_hex_cap(t_stock *lst, size_t decimal)
+void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 {
 	size_t		len;
 	char	*hex;
@@ -81,7 +81,7 @@ void	ft_print_hex_cap(t_stock *lst, size_t decimal)
 	ft_print_left_align_space(lst);
 }
 
-void	ft_print_hex(t_stock *lst, size_t decimal)
+void	ft_print_hex(t_stock *lst, unsigned int decimal)
 {
 	size_t		len;
 	char	*hex;
