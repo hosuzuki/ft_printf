@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:50:02 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 16:57:35 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 20:25:29 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,18 @@ void	ft_print_wid_pre(t_stock *lst, size_t len)
 	tmp = 0;
 	if (lst->sign == PLUS)
 		tmp++;
-	if (lst->zero_pad == ON && lst->width < lst->precision) 
+	if (lst->zero_pad == ON && lst->width < lst->precision)
 		return ;
 	if (lst->zero_pad == ON && lst->precision < 0)
 		return ;
-	//	else if (len < lst->width && lst->zero_pad == OFF)
-//	if (len < lst->width && lst->zero_pad == OFF)
 	if ((long long)len < lst->width)
 	{
-//		if (0 < lst->width - lst->precision && lst->sign == MINUS)
-//		 tmp += lst->width - lst->precision;
 		tmp += (long long)len;
 		while (0 < lst->width - tmp)
 			ft_write(lst, " ", 1);
 	}
-//	else if (0 < lst->precision && lst->precision < lst->width)
-	else if (0 < lst->precision && lst->precision < lst->width && (long long)len < lst->width)
+	else if (0 < lst->precision && lst->precision < lst->width
+		&& (long long)len < lst->width)
 	{
 		if (lst->sign == MINUS)
 			tmp++;
@@ -73,7 +69,6 @@ void	ft_print_zero_pad(t_stock *lst, size_t len)
 		len++;
 	if (lst->sign == MINUS)
 		len--;
-//	if (lst->width <= 0 && lst->precision != 0)
 	if (lst->left_align == ON || lst->width <= lst->precision)
 	{
 		while (0 < lst->precision - (long long)len)

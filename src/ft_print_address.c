@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 08:15:28 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 20:19:45 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_print_space_address(t_stock *lst, size_t len)
 static char	*ft_dtoa(size_t nbr, char	*base, size_t len)
 {
 	static size_t	i;
-	static char	res[20];
+	static char		res[20];
 
 	res[0] = '0';
 	res[1] = 'x';

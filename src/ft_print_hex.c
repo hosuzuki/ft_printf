@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 15:11:30 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 20:24:21 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	ft_print_zero_hex(t_stock *lst, size_t len)
 
 void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 {
-	size_t		len;
+	size_t	len;
 	char	*hex;
 
 	hex = ft_dtoh(decimal, "0123456789ABCDEF", 16);
@@ -83,7 +83,7 @@ void	ft_print_hex_cap(t_stock *lst, unsigned int decimal)
 
 void	ft_print_hex(t_stock *lst, unsigned int decimal)
 {
-	size_t		len;
+	size_t	len;
 	char	*hex;
 
 	hex = ft_dtoh(decimal, "0123456789abcdef", 16);

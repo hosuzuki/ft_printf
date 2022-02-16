@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:25 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 12:42:53 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 20:27:13 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@
 
 typedef struct slist
 {
-	size_t			total_len;
-	va_list				args;
-	int					status;
-	int					left_align;
-	int					zero_pad;
-	int					hash;
-	int					sign;
-	int					space;
-	long long			width;
-	long long			precision;
+	size_t		total_len;
+	va_list		args;
+	int			status;
+	int			left_align;
+	int			zero_pad;
+	int			hash;
+	int			sign;
+	int			space;
+	long long	width;
+	long long	precision;
 }	t_stock;
 
 int		ft_printf(const char *fmt, ...);

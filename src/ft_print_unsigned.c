@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:16 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 12:43:00 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/16 20:24:10 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static char	*ft_itoa_un(unsigned int nbr)
 void	ft_print_unsigned(t_stock *lst, unsigned int nbr)
 {
 	char	*res;
-	size_t		len;
+	size_t	len;
 
 	res = ft_itoa_un(nbr);
 	if (!res)
