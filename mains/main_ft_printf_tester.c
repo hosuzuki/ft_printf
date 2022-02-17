@@ -12,7 +12,8 @@ void end(void)
 
 int main(void)
 {
-	PRINT(" --- Return : %d\n", PRINT("%*d", INT_MAX - 1, 8)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%04d", 8)); //T23
+//	PRINT(" --- Return : %d\n", PRINT("%*d", INT_MAX - 1, 8)); //T23
 /*
 	PRINT(" --- Return : %d\n", PRINT("[%0*d]\n", -4, 8)); //T23
 	PRINT(" --- Return : %d\n", PRINT("[%-3.2d]\n", 8)); //T23
