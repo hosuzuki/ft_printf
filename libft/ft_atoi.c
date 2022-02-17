@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 18:03:48 by hokutosuz         #+#    #+#             */
-/*   Updated: 2021/11/25 10:05:57 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/18 08:27:40 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	is_space(const char c)
 	return (false);
 }
 
-int static	check_max(long long res, char *str, size_t i, int sign)
+static int	check_max(long long res, char *str, size_t i, int sign)
 {
 	long long	tmp;
 
