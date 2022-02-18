@@ -6,7 +6,7 @@
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:23:15 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 20:58:42 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/02/18 21:45:25 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	ft_analyze_speci(const char *fmt, t_stock *lst, size_t *i)
 	else if (fmt[*i] == 'd' || fmt[*i] == 'i')
 		ft_print_decimal(lst, va_arg(lst->args, int));
 	else if (fmt[*i] == 'u')
-		ft_print_unsigned(lst, va_arg(lst->args, size_t));
+		ft_print_unsigned(lst, va_arg(lst->args, unsigned int));
 	else if (fmt[*i] == 'x')
-		ft_print_hex(lst, va_arg(lst->args, size_t));
+		ft_print_hex(lst, va_arg(lst->args, unsigned int));
 	else if (fmt[*i] == 'X')
-		ft_print_hex_cap(lst, va_arg(lst->args, size_t));
+		ft_print_hex_cap(lst, va_arg(lst->args, unsigned int));
 	else if (fmt[*i] == '%')
 	{
 		if (ERROR == ft_write(lst, "%", 1))
@@ -64,8 +64,11 @@ int	ft_analyze_flags(const char *fmt, t_stock *lst, size_t *i)
 			ft_turnon_space(lst, i);
 		else if (fmt[*i] == '#')
 			ft_turnon_hash(lst, i);
-		ft_save_width(fmt, lst, i);
-		ft_save_precision(fmt, lst, i);
+		if (!ft_isflag(fmt[*i]))
+		{
+			ft_save_width(fmt, lst, i);
+			ft_save_precision(fmt, lst, i);
+		}
 		if (lst->status == ERROR)
 			return (ERROR);
 	}

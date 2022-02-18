@@ -42,6 +42,6 @@ fclean : clean
 
 re : fclean all
 
-bonus :
+bonus : $(NAME)
 
 .PHONEY : all clean fclean re bonus

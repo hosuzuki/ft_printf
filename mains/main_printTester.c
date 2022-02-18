@@ -12,10 +12,11 @@ void end(void)
 
 int main(void)
 {
-	ft_printf("%02x\n", -100);
-	ft_printf("%03d\n", 1);
-	ft_printf("%01d\n", 10);
-	printf("%01d\n", 10);
+	
+	//	ft_printf("%02x\n", -100);
+//	ft_printf("%03d\n", 1);
+//	ft_printf("%01d\n", 10);
+//	printf("%01d\n", 10);
 //	PRINT("%01d\n", 10);
 /*	PRINT("%u\n", LONG_MAX);
 	PRINT("%d\n", INT_MIN);
