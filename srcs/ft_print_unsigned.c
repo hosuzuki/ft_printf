@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
+#include "../libft/includes/libft.h"
 
 static int	ft_digit_len(size_t n)
 {

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
+#include "../libft/includes/libft.h"
 
 void	ft_print_space(t_stock *lst, size_t len)
 {

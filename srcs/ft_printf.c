@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_utils.c                                   :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 07:14:49 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/16 21:09:59 by hokutosuz        ###   ########.fr       */
+/*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/02/11 08:48:48 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
+#include "../libft/includes/libft.h"
 
-int	ft_under_intmax(t_stock *lst, size_t total, size_t len)
+int	ft_printf(const char *fmt, ...)
 {
-	if (len <= 0)
-		return (GOOD);
-	if ((size_t)INT_MAX <= total + len)
-	{
-		lst->status = ERROR;
-		return (ERROR);
-	}
-	return (GOOD);
-}
+	t_stock	*lst;
+	int		total_length;
 
-int	ft_write(t_stock *lst, char	*content, size_t len)
-{
-	if (ERROR == ft_under_intmax(lst, lst->total_len, len))
-		return (ERROR);
-	lst->total_len += write(1, content, len);
-	lst->width -= len;
-	return (GOOD);
+	if (!fmt)
+		return (0);
+	lst = (t_stock *)malloc(sizeof(t_stock));
+	if (!lst)
+		return (-1);
+	lst->total_len = 0;
+	va_start(lst->args, fmt);
+	total_length = ft_analyze_fmt(fmt, lst);
+	va_end(lst->args);
+	free (lst);
+	return (total_length);
 }

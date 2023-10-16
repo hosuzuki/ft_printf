@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hokutosuzuki <hosuzuki@student.42toky      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 17:23:17 by hokutosuz         #+#    #+#             */
-/*   Updated: 2022/02/11 08:48:48 by hokutosuz        ###   ########.fr       */
+/*   Created: 2022/02/02 21:10:30 by hokutosuz         #+#    #+#             */
+/*   Updated: 2022/02/16 16:20:14 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
+#include "../libft/includes/libft.h"
 
-int	ft_printf(const char *fmt, ...)
+void	ft_print_char(t_stock *lst, int c)
 {
-	t_stock	*lst;
-	int		total_length;
+	char	chara;
 
-	if (!fmt)
-		return (0);
-	lst = (t_stock *)malloc(sizeof(t_stock));
-	if (!lst)
-		return (-1);
-	lst->total_len = 0;
-	va_start(lst->args, fmt);
-	total_length = ft_analyze_fmt(fmt, lst);
-	va_end(lst->args);
-	free (lst);
-	return (total_length);
+	if (lst->left_align == OFF)
+		ft_print_space(lst, 1);
+	chara = (char)c;
+	if (lst->left_align == OFF && lst->precision < lst->width)
+		ft_print_wid_pre(lst, 1);
+	ft_write(lst, &chara, 1);
+	ft_print_left_align_space(lst);
 }
