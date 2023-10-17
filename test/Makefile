@@ -6,7 +6,6 @@ NAME_FT_OUT	= ft.out
 NAME_PF_OUT	= pf.out
 ROOTPATH	= ../
 SRC			= main_42tester.c
-OBJS		= ${SRC:.c=.o}
 
 # **************************************************************************** #
 
@@ -26,7 +25,7 @@ RC = \033[0m
 
 all: ${NAME}
 
-$(NAME): libftprintfmake
+$(NAME): libftprintfmake_re
 	${CC} ${FT_FLAGS} ${SRC} -o ${NAME_FT_OUT} ${LIB} 
 	${CC} ${PF_FLAGS} $(SRC) -o ${NAME_PF_OUT} ${LIB} 
 	./${NAME_FT_OUT} > ${NAME_FT}
@@ -34,15 +33,15 @@ $(NAME): libftprintfmake
 	${shell ${DIFF} ${NAME_FT} ${NAME_PF} > ${NAME}}
 	@printf "$(YE)=== Test Result Available [$(CC)] ===\n--- $(NAME)$(RC)\n"
 
-libftprintfmake:
+libftprintfmake_re:
 	${MAKE} -C ${ROOTPATH} re --no-print-directory 
 
 clean:
-	${RM} ${OBJS}
 	${MAKE} -C ${ROOTPATH} clean --no-print-directory 
 
 fclean: clean
 	${RM} ${NAME} ${NAME_FT} ${NAME_PF} ${NAME_FT_OUT} ${NAME_PF_OUT}
+	@printf "$(RE)=== Removed $(NAME) ===$(RC)\n"
 	${MAKE} -C ${ROOTPATH} fclean --no-print-directory 
 
 re: fclean all
