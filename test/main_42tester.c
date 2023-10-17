@@ -1,14 +1,14 @@
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
+#include "../libft/includes/libft.h"
 #include <limits.h>
 #include <stdio.h>
 
-void end(void)__attribute__((destructor));
+// void end(void)__attribute__((destructor));
 
-void end(void)
-{
-	    system("leaks a.out");
-}
+// void end(void)
+// {
+// 	    system("leaks a.out");
+// }
 
 int main(void)
 {
