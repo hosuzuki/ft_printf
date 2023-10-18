@@ -5,7 +5,7 @@ NAME_PF		= pf.txt
 NAME_FT_OUT	= ft.out
 NAME_PF_OUT	= pf.out
 ROOTPATH	= ../
-SRC			= main_42tester.c
+SRC			= main.c
 
 # **************************************************************************** #
 

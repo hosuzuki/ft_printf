@@ -1,4 +1,5 @@
 #include "../includes/ft_printf.h"
+#include "../libft/includes/libft.h"
 #include <limits.h>
 #include <stdio.h>
 
@@ -11,258 +12,75 @@ void end(void)
 
 int main(void)
 {
-	int i;
-	int j;
-	int a;
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0";
 
-	printf("d, ULLONG_MAX - 1\n");
-	i = printf("%d\n", ULLONG_MAX - 1); //
-	printf("return value: %d\n", i); //
-	i = ft_printf("%d\n", ULLONG_MAX - 1); //
-	printf("return value: %d\n", i); //
-	printf("\n");
+	PRINT(" --- Return : %d\n", PRINT("[%4d]\n", j)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%3.2d]\n", i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d]\n", i, j, k, l, m, c, e, d)); //T7
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", 2, 1, k)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", 2, 1, j)); //T23
 
-	printf("d, ULLONG_MAX\n");
-	i = printf("%d\n", ULLONG_MAX); //
-	printf("return value: %d\n", i); //
-	i = ft_printf("%d\n", ULLONG_MAX); //
-	printf("return value: %d\n", i); //
-	printf("\n");
-
-	printf("x, ULLONG_MAX - 1\n");
-	i = printf("%x\n", ULLONG_MAX - 1); //fffffffe 
-	printf("return value: %d\n", i); //9
-	i = ft_printf("%x\n", ULLONG_MAX - 1); //fffffffe 
-	printf("return value: %d\n", i); //9
-	printf("\n");
-
-	printf("x, ULLONG_MAX\n");
-	i = printf("%x\n", ULLONG_MAX); //ffffffff (UINT_MAX)
-	printf("return value: %d\n", i); //9
-	i = ft_printf("%x\n", ULLONG_MAX); //ffffffff (UINT_MAX)
-	printf("return value: %d\n", i); //9
-	printf("\n");
-
-	printf("x, ULLONG_MAX + 1\n");
-	i = printf("%x\n", ULLONG_MAX + 1); //ffffffff (UINT_MAX)
-	printf("return value: %d\n", i); //9
-	i = ft_printf("%x\n", ULLONG_MAX + 1); //ffffffff (UINT_MAX)
-	printf("return value: %d\n", i); //9
-	printf("\n");
-
-	printf("x, ULLONG_MAX - 1\n");
-	a = printf("%u\n", ULLONG_MAX- 1); //
-	printf("return value: %d\n", a); //11
-	a = ft_printf("%u\n", ULLONG_MAX- 1); //
-	printf("return value: %d\n", a); //11
-	printf("\n");
-
-	printf("x, ULLONG_MAX\n");
-	a = printf("%u\n", ULLONG_MAX); //42994967295 (UINT_MAX)
-	printf("return value: %d\n", a); //11
-	a = ft_printf("%u\n", ULLONG_MAX); //42994967295 (UINT_MAX)
-	printf("return value: %d\n", a); //11
-	printf("\n");
-
-	printf("x, ULLONG_MAX + 1\n");
-	a = printf("%u\n", ULLONG_MAX + 1); //0
-	printf("return value: %d\n", a); //2
-	a = ft_printf("%u\n", ULLONG_MAX + 1); //0
-	printf("return value: %d\n", a); //2
-//	printf("return value: %d\n", ft_printf("%*d\n", INT_MAX - 1, 1)); // 000
-//	printf("return value :%d\n", printf("%*d\n", INT_MAX - 1, 1)); // 000
-
-	ft_printf("[%15.10x]\n", 108); // 000
-	printf("[%15.10x]\n", 108); // 000
-
-	ft_printf("[%-15.10x]\n", 108); // 000
-	printf("[%-15.10x]\n", 108); // 000
-
-	ft_printf("[% 10d ]\n", -1);
-	printf("[% 10d ]\n", -1);
-
-	ft_printf("[%- 10d ]\n", -1);
-	printf("[%- 10d ]\n", -1);
-
-	ft_printf("[% d ]\n", -1);
-	printf("[% d ]\n", -1);
+	PRINT(" --- Return : %d\n", PRINT("[%02i]\n", i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%2i]\n", i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0*.*i]\n", 2, 0, i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%*.*i]\n", -2, 2, i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0*i]\n", -4, i)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%0*i, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 	
-	ft_printf("[ %d ]\n", INT_MIN);
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", -4, -2, 8)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%*.*d]\n", 1, 2, 8)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+	PRINT(" --- Return : %d\n", PRINT("[%.1d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%1.1d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%.1i, %.1d, %.1d, %.1d, %.1d, %.1d, %.1d, %.1d", i, j, k, l, m, c, e, d)); //T24
 
-	printf("[ %d  ]\n", -1);
-	ft_printf("[ %d  ]\n", -1);
-	
-	printf("[%10d]\n", -123);
-	ft_printf("[%10d]\n", -123);
+	PRINT(" --- Return : %d\n", PRINT("[%0.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%0.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%1.i, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d", i, j, k, l, m, c, e, d)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d", i, j, k, l, m, c, e, d)); //T12
 
-	ft_printf("[ %c ]\n", '0');
-	printf("[ %c ]\n", '0');
+	PRINT(" --- Return : %d\n", PRINT("[%1.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%1.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%10.d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("[%10.0d]\n", l)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%1.i, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d", i, j, k, l, m, c, e, d)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%0-i, %0-d, %0-d, %0-d, %0-d, %0-d, %0-d, %0-d", i, j, k, l, m, c, e, d)); //T16
+	PRINT(" --- Return : %d\n", PRINT("%3i, %3d, %3d, %3d, %3d, %3d, %3d, %3d", i, j, k, l, m, c, e, d)); //T6
 
-	printf("[% d]\n", -1);
-	ft_printf("[% d]\n", -1);
-
-	printf("[% d]\n", 0);
-	ft_printf("[% d]\n", 0);
-
-	ft_printf("[% s]\n", "-");
-	printf("[% s]\n", "-");
-
-	ft_printf("[% s]\n", "");
-	printf("[% s]\n", "");
-
-	ft_printf("%#x\n", 0);//zenn
-	printf("%#x\n", 0);//zenn
-
-	ft_printf("%-s\n", "-");
-	printf("%-s\n", "-");
-	
-	ft_printf("%.s\n", "-"); // zenn
-	printf("%.s\n", "-"); // zenn
-
-	ft_printf("[%04x]\n", 9);
-	printf("[%04x]\n", 9);
-
-	ft_printf("[%.2x]\n", 1); //zenn
-	printf("[%.2x]\n", 1); //zenn
-
-	ft_printf("[%.1s %.2s %.3s %.4s]\n", " - ", "", "4", "");
-	printf("[%.1s %.2s %.3s %.4s]\n", " - ", "", "4", "");
-
-	ft_printf("[ %010d ]\n", INT_MIN);
-	printf("[ %010d ]\n", INT_MIN);
-
-	ft_printf("[ %04d ]\n", -14);
-	printf("[ %04d ]\n", -14);
-
-	ft_printf("[ %-13p %-14p ]\n", ULONG_MAX, -ULONG_MAX);
-	printf("[ %-13p %-14p ]\n", ULONG_MAX, -ULONG_MAX);
-
-	ft_printf("[ %-11p %-12p ]\n", INT_MIN, INT_MAX);
-//	printf("[ %-11p %-12p ]\n", INT_MIN, INT_MAX);
-
-	ft_printf("[%1s]\n", "");
-	printf("[%1s]\n", "");
-
-	ft_printf("[ %-2c ]\n", '0');
-	printf("[ %-2c ]\n", '0');
-
-	ft_printf(" %d \n", 10);
-	printf(" %d \n", 10);
-
-	ft_printf(" NULL %s NULL \n", NULL);
-	//printf(" NULL %s NULL ", NULL);
-
-	ft_printf("s is : %s\n", "abcde");
-	printf("s is : %s\n", "abcde");
-
-	ft_printf("a\n");
-	printf("a\n");
-
-	ft_printf("[%-10d]\n", 1);
-	printf("[%-10d]\n", 1);
-
-	ft_printf("[%010d]\n", 1);
-	printf("[%010d]\n", 1);
-	
-	ft_printf("%+d\n", 1);
-	printf("%+d\n", 1);
-
-	ft_printf("%+d\n", 0);
-	printf("%+d\n", 0);
-
-	ft_printf("[% d]\n", 1);
-	printf("[% d]\n", 1);
-
-	ft_printf("[%.10d]\n", 1);
-	printf("[%.10d]\n", 1);
-
-	ft_printf("[%+10d]\n", 123);
-	printf("[%+10d]\n", 123);
-
-	ft_printf("[%.10d]\n", -1);
-	printf("[%.10d]\n", -1);
-
-	ft_printf("[%10d]\n", 123);
-	printf("[%10d]\n", 123);
-
-	char *s = "abcde";
-	char *n = NULL;
-
-	ft_printf("%p\n", s);
-	printf("%p\n", s);
-
-	ft_printf("%p\n", n);
-	printf("%p\n", n);
-
-	ft_printf("[%-15p]\n", s);
-	printf("[%-15p]\n", s);
-
-	ft_printf("[%3p]\n", s);
-	printf("[%3p]\n", s);
-
-	ft_printf("%#p\n", s);
-	printf("%#p\n", s); //reuslts in undefined behavior
-
-	ft_printf("% p\n", s);
-	printf("% p\n", s);// results in undefined behavior
-
-	ft_printf("%0p\n", s);
-	printf("%0p\n", s); //results in undefined behavior
-
-	ft_printf("%+p\n", s);
-	printf("%+p\n", s); // results in undefined behavior
-
-	ft_printf("[%20p]\n", s);
-	printf("[%20p]\n", s);
-
-	ft_printf("[%.20p]\n", s);
-	printf("[%.20p]\n", s); // reuslts in undefined behavior
-
-	ft_printf("%%,%d\n", 123);
-	printf("%%,%d\n", 123);
-
-	ft_printf("[%10u]\n", 1);
-	printf("[%10u]\n", 1);
-
-	ft_printf("[%10u]\n", -1);
-	printf("[%10u]\n", -1);
-
-	ft_printf("[%10x]\n", 108);
-	printf("[%10x]\n", 108);
-	
-	ft_printf("%#x\n", 108); 
-	printf("%#x\n", 108); 
-//	printf("% x\n", 108);// results in undefined behavior
-	ft_printf("%0x\n", 108); //results in undefined behavior
-	printf("%0x\n", 108); //results in undefined behavior
-//	printf("%+x\n", 108); // results in undefined behavior
-	ft_printf("%-x\n", 108);
-	printf("%-x\n", 108);
-
-
-	ft_printf("[%-10.10x]\n", 108); //000
-	printf("[%-10.10x]\n", 108); //000
-
-	ft_printf("[%10x]\n", 108);
-	printf("[%10x]\n", 108);
-
-	ft_printf("[%.10x]\n", 108); //000
-	printf("[%.10x]\n", 108); //000
-
-	ft_printf("[%-10x]\n", 108);
-	printf("[%-10x]\n", 108);
-
-	ft_printf("[%-.10x]\n", 108); // 000
-	printf("[%-.10x]\n", 108); // 000
-
-	ft_printf("[%5.10x]\n", 108); // 000
-	printf("[%5.10x]\n", 108); // 000
-
-	ft_printf("[%15.10x]\n", 108); // 000
-	printf("[%15.10x]\n", 108); // 000
-
-	ft_printf("[%-15.10x]\n", 108); // 000
-	printf("[%-15.10x]\n", 108); // 000
-
+	(void)r;
+	(void)n;
+	(void)p;
+	(void)u;
+	(void)g;
+	(void)b;
+	(void)h;
+	(void)q;
+	(void)o;
+	(void)t;
+	(void)s;
+	(void)a;
+	(void)f;
 	return (0);
 }
