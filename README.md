@@ -66,19 +66,38 @@ The function is written in C language and thus needs the **`gcc` compiler** and 
 git clone git@github.com:hosuzuki/ft_printf.git
 ```
 
-And them, move to test directory in the cloned directory.
+And them, move to the cloned directory.
 ```shell
-cd ft_printf/test
+cd ft_printf
 ```
 
-##### 🌘 2. Compile get_next_line with main.c which has test code
+##### 🌘 2. Clone the libft repository(submodule)
 
-The makefile compiles all files from the ``src/`` folders and saves the object files to the ``objs/`` folders. <br>
-It then generates the output file ``libftprintf.a`` in the root directory and ``diff.txt`` in the test directory.
+First, initialize the local configuration file using ``git submodule init`` and then obtain data from the project using ``git submodule update``.
 
+```shell
+git submodule init
+git submodule update
+```
+
+##### 🌘 3. Compile libftprintf.a with main.c which has test code
+
+First, move to test directory.
+```shell
+cd test
+```
+
+And them, run ``make`` command.
 ```shell
 make
 ```
+
+Makefile compiles all files from the ``src/`` folders and saves the object files to the ``objs/`` folders. <br>
+It then generates the output file ``libftprintf.a`` in the root directory.
+
+Additionally, the Makefile generates ``diff.txt`` in the test directory, which displays the comparison results between the printf function and the ft_printf function.
+<br><br>
+
 
 #### 🌗 Using it in your code (use your main.c)
 
