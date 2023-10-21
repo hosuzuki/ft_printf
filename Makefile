@@ -41,7 +41,7 @@ all: $(NAME)
 $(NAME): $(OBJDIR) $(OBJS)
 	@printf "\n$(GR)=== Compiled ==="
 	@printf "\n--- $(notdir $(SRCS))$(RC)\n"
-	$(MAKE) --no-print-directory -C ./libft
+	$(MAKE) --no-print-directory -C ./libft bonus
 	cp libft/libft.a $(NAME)
 	$(ARC) $(NAME) $(OBJS)
 	$(RAN) $(NAME)
