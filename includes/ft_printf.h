@@ -18,8 +18,8 @@
 
 # define ERROR -1
 # define GOOD 0
-# define OFF -5
-# define ON  1
+# define ON  0
+# define OFF 1
 # define PLUS 2
 # define MINUS -2
 
