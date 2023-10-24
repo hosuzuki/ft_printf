@@ -49,7 +49,7 @@ $(NAME): $(OBJDIR) $(OBJS)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
-	@printf "$(GR)=== Compiling $(NAME) ... [$(CC) $(CFLAGS)] ===$(RC)\n"
+	@printf "$(GR)=== Compiling... [$(CC) $(CFLAGS)] ===$(RC)\n"
 
 $(OBJDIR)%.o: $(SRC_DIRECTORY)%.c
 	@$(CC) $(CFLAGS) -c -o $@ $< $(HEAD)
